@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { AuthserviceService } from 'src/app/shared/utils/services/authservice.service';
+import { Usuarios } from 'src/app/core/models/usuarios';
 
 @Component({
   selector: 'app-login',
@@ -7,20 +9,32 @@ import { FormControl, Validators } from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-  email = new FormControl('', [Validators.required, Validators.email]);
   hide = true;
+  usuario: Usuarios;
 
-  getErrorMessage() {
-    if (this.email.hasError('required')) {
-      return 'You must enter a value';
-    }
+  formulario: FormGroup;
+  
+  constructor(
+    private authService: AuthserviceService,
+    private formBuilder: FormBuilder
+  ) { }
 
-    return this.email.hasError('email') ? 'Not a valid email' : '';
+  
+  ngOnInit() {
+    this.createForm();
+    console.log(this.formulario);
+  }
+  
+  authenticated(){
+    this.usuario = this.formulario.value;
+    console.log(this.usuario);
+  }
+
+  createForm(){
+    this.formulario = this.formBuilder.group({
+      nome_usuario:['', Validators.required],
+      senha: ['', Validators.required]
+    });
   }
 
 }
