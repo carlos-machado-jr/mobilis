@@ -27,7 +27,13 @@ export class LoginComponent implements OnInit {
   
   authenticated(){
     this.usuario = this.formulario.value;
-    console.log(this.usuario);
+    this.authService.authenticate(this.usuario).subscribe(
+      response => {
+        console.log(response.headers.get('Authorization'))
+      },
+      erro => ''
+      
+    );
   }
 
   createForm(){

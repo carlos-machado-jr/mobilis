@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // material design
 import {MatFormFieldModule, MatInputModule, MatCardModule, MatIconModule, MatSuffix, MatButtonModule } from '@angular/material';
+import { AuthserviceService } from 'src/app/shared/utils/services/authservice.service';
 
 
 
@@ -33,6 +34,7 @@ import {MatFormFieldModule, MatInputModule, MatCardModule, MatIconModule, MatSuf
     MatButtonModule
    
     
-  ]
+  ],
+  providers: [AuthserviceService]
 })
 export class LoginModule { }
