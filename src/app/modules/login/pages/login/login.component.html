@@ -2,13 +2,31 @@
 <section>
     <div class="conatainer">
         <div class="row">
-           <form action="">
-            <mat-form-field appearance="fill">
-                <mat-label>Enter your email</mat-label>
-                <input matInput placeholder="pat@example.com" [formControl]="email" required>
-                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-              </mat-form-field>
-           </form>
+           <mat-card>
+               <mat-card-content>
+                   <mat-card-title>Login</mat-card-title>
+                  <form action="">
+                    <mat-form-field appearance="outline">
+                        <mat-label> Nome de usuario</mat-label>
+                        <input matInput placeholder="Digite seu nome de usuario">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label> Senha </mat-label>
+                        <input matInput [type]="hide ? 'password' : 'text'" placeholder="Digite sua senha" >
+                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                    </mat-form-field>
+
+                    <mat-card-actions>
+                        <button  mat-raised-button color="primary" > Enviar </button>
+                        
+                    </mat-card-actions>
+                     
+                  </form>
+
+               </mat-card-content>
+           </mat-card>
         </div>
     </div>
 

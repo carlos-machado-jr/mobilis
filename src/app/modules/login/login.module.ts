@@ -9,7 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 // material design
-import {MatFormFieldModule, MatInputModule } from '@angular/material';
+import {MatFormFieldModule, MatInputModule, MatCardModule, MatIconModule, MatSuffix, MatButtonModule } from '@angular/material';
 
 
 
@@ -28,7 +28,9 @@ import {MatFormFieldModule, MatInputModule } from '@angular/material';
     // material design
     MatFormFieldModule,
     MatInputModule, 
-
+    MatCardModule,
+    MatIconModule,
+    MatButtonModule
    
     
   ]
