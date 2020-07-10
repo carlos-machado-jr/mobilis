@@ -9,7 +9,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 // material design
-import {MatFormFieldModule, MatInputModule, MatCardModule, MatIconModule, MatSuffix, MatButtonModule } from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule, MatSuffix } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 import { AuthserviceService } from 'src/app/shared/utils/services/authservice.service';
 
 
