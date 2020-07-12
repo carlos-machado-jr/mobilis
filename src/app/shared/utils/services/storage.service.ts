@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { STORAGE_KEYS } from 'src/app/core/config/storage_keys.config';
 import { LocalUser } from 'src/app/core/models/local_user';
+import { Usuarios } from 'src/app/core/models/usuarios';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,7 @@ import { LocalUser } from 'src/app/core/models/local_user';
 export class StorageService {
 
   constructor() { }
+
 
   getLocalUser(){
     let usr = localStorage.getItem(STORAGE_KEYS.localUser);
@@ -36,4 +38,9 @@ export class StorageService {
     return null;
     
   }
+
+    
+    
+    
+
 }

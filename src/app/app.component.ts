@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { AuthserviceService } from './shared/utils/services/authservice.service';
+import { AccountService } from './shared/utils/services/account.service';
+import { StorageService } from './shared/utils/services/storage.service';
+import { Usuarios } from './core/models/usuarios';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +11,16 @@ import { AuthserviceService } from './shared/utils/services/authservice.service'
 })
 export class AppComponent {
   title = 'mobilis';
+  usuario: Usuarios;
+  constructor(
+    private account: AccountService,
+    private storage: StorageService
+    ){}
 
+  ngOnInit(){
+    
+
+  }
 
   
 }

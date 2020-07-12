@@ -35,7 +35,9 @@ export class AuthserviceService {
       observe: 'response',
       responseType: 'text'
     }).pipe(
-      tap(response => this.succesfulLogin(response.headers.get('Authorization')))
+      tap(response => this.succesfulLogin(response.headers.get('Authorization')
+      
+      ))
     );
   }
 
@@ -45,8 +47,11 @@ export class AuthserviceService {
     if(authorizationValue != null){
       let user = this.extractToken(authorizationValue.substring(7));
       this.storage.setLocalUser(user);
+      user = this.storage.getLocalUser();
       this.account.isLoggedIn.next(true);
+      this.account.findByPerfil(user.nome_usuario).subscribe(console.log);
     }
+    
     return null;
   }
 
