@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CoreModule } from './core/core.module'
 import { StorageService } from './shared/utils/services/storage.service'
 import { AccountService } from './shared/utils/services/account.service';
+import { ShowIfLoggedDirective } from './shared/utils/directives/show-if-logged.directive';
 
 
 
@@ -16,6 +17,7 @@ import { AccountService } from './shared/utils/services/account.service';
   declarations: [
     AppComponent,
     NavbarComponent,
+    ShowIfLoggedDirective,
     
   ],
   imports: [
