@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   hide = true;
-  usuario: Usuarios;
+  
 
   formulario: FormGroup;
   
@@ -28,8 +28,7 @@ export class LoginComponent implements OnInit {
   }
   
   authenticated(){
-    this.usuario = this.formulario.value;
-    this.authService.authenticate(this.usuario).subscribe(
+    this.authService.authenticate(this.formulario.value).subscribe(
       sucess => {
 
         this.authService.succesfulLogin(sucess.headers.get('Authorization'));

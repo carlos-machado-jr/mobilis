@@ -21,7 +21,7 @@ export class AuthserviceService {
     private storage: StorageService
     ) { }
 
-  authenticate(usuario: Usuarios){
+  authenticate(usuario: any){
     return this.http.post(`${API_CONFIG.baseurl}/login`, usuario, {
       observe: 'response',
       responseType: 'text'
