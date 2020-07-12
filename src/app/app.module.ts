@@ -7,6 +7,7 @@ import { NavbarComponent } from './core/components/navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { CoreModule } from './core/core.module'
+import { StorageService } from './shared/utils/services/storage.service'
 
 
 @NgModule({
@@ -21,7 +22,7 @@ import { CoreModule } from './core/core.module'
     HttpClientModule,
     CoreModule
   ],
-  providers: [],
+  providers: [StorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
