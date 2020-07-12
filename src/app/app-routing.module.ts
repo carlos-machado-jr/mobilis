@@ -5,17 +5,19 @@ import { AuthGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
  
-  { path: 'home', loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule) ,
-    canActivate:[AuthGuard] },
   { path: 'login', loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule) },
+  
+  { path: 'home', loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule) ,
+      canActivate:[AuthGuard] },
   { path: 'proprietarios', 
       loadChildren: () => import('./modules/proprietarios/proprietarios.module').then(m => m.ProprietariosModule) ,
       canActivate:[AuthGuard]},
-  {
-    path: '',
-    pathMatch: 'full',
-    redirectTo: 'home'
-  }
+  
+  { path: 'usuarios', loadChildren: () => import('./modules/usuarios/usuarios.module').then(m => m.UsuariosModule)  ,
+      canActivate:[AuthGuard]},
+  
+  { path: '', pathMatch: 'full', redirectTo: 'home'}
+ 
 ];
 
 @NgModule({
