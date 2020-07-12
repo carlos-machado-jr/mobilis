@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./proprietarios.component.css']
 })
 export class ProprietariosComponent implements OnInit {
+  
   $data: Observable<any>;
   columns: String[] = ['id', 'nome', 'email', 'nip', 'cnh', 'setor', 'posto', 'cartao']
   constructor(private proprietarioService: ProprietariosService) { }
@@ -15,5 +16,5 @@ export class ProprietariosComponent implements OnInit {
   ngOnInit(): void {
    this.$data = this.proprietarioService.findByAll();
   }
-
+  
 }

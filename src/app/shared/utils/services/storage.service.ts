@@ -26,4 +26,10 @@ export class StorageService {
       localStorage.setItem(STORAGE_KEYS.localUser, JSON.stringify(obj));
     }
   }
+
+  getAuthorizationToken(){
+    let user: LocalUser = this.getLocalUser();
+    let token = JSON.stringify(user.token);
+    return token;
+  }
 }

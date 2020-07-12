@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ErrorInterceptorProvider } from './interceptors/error.interceptor'
 import { HeadersInterceptorProvider } from './interceptors/headers.interceptor'
+import { AuthGuard } from './guards/auth.guard'
 
 
 
@@ -11,6 +12,6 @@ import { HeadersInterceptorProvider } from './interceptors/headers.interceptor'
   imports: [
     CommonModule 
   ],
-  providers: [HeadersInterceptorProvider,ErrorInterceptorProvider]
+  providers: [HeadersInterceptorProvider,ErrorInterceptorProvider, AuthGuard]
 })
 export class CoreModule { }
