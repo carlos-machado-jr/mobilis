@@ -12,10 +12,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule, MatPaginatorIntl } from '@angular/material/paginator';
 import { MAT_LABEL_GLOBAL_OPTIONS } from '@angular/material/core';
-
+import { TableComponent } from '../../shared/components/table/table.component'
 
 @NgModule({
-  declarations: [HomeComponent],
+  declarations: [HomeComponent, TableComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
@@ -36,6 +36,6 @@ import { MAT_LABEL_GLOBAL_OPTIONS } from '@angular/material/core';
       useValue: {float: 'auto'}
       
     },
-    { provide: MatPaginatorIntl, useClass: HomeComponent}]
+    { provide: MatPaginatorIntl, useClass: TableComponent}]
 })
 export class HomeModule { }

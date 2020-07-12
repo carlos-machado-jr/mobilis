@@ -8,13 +8,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { CoreModule } from './core/core.module'
 import { StorageService } from './shared/utils/services/storage.service'
-import { AccountService } from './shared/utils/services/account.service'
+import { AccountService } from './shared/utils/services/account.service';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
+    
   ],
   imports: [
     BrowserModule,
