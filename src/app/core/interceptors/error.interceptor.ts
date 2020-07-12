@@ -21,15 +21,7 @@ export class ErrorInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
    
       return next.handle(request)
-      
       .pipe(
-        tap((response: HttpEvent<any>) => {
-          if (response instanceof HttpResponse) {
-            console.log("entrou");
-            
-            console.log(response.headers.get('Authorization'));
-          }
-        }),
         catchError(this.handleError)
         
         );
@@ -39,15 +31,35 @@ export class ErrorInterceptor implements HttpInterceptor {
       
       console.error('Ocorreu um erro no servidor:', error.error.message);
     } else {
-      let erro = JSON.parse(error.error);
-      console.error(
-        `Codigo de erro: ${error.status}, ` +
-        `Mensagem: ${erro['message']}`);
+      let erro;
+      switch (error.status){
+        case 401 :
+           erro = JSON.parse(error.error);
+          console.error(
+            `Codigo de erro: ${error.status}, ` +
+            `Mensagem: ${erro.msg }`);
+            break;
+        case 403:
+           erro = JSON.stringify(error.error);
+          console.error(
+            `Codigo de erro: ${error.status}, ` +
+            `Mensagem: ${JSON.parse(erro).msg }`);  
+            break;
+        default:
+          erro = JSON.stringify(error.error);
+          console.error(
+            `Codigo de erro: ${error.status}, ` +
+            `Mensagem: ${erro }`); 
+      }
+
+      
     }
  
     return throwError(
       'Algo ruím aconteceu; por favor, tente novamente mais tarde.');
   };
+
+  
 }
 export const ErrorInterceptorProvider = {
   provide: HTTP_INTERCEPTORS,

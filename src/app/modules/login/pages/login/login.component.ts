@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   
   ngOnInit() {
     this.createForm();
-    console.log(this.formulario);
+  
   }
   
   authenticated(){

@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { CoreModule } from './core/core.module'
 import { StorageService } from './shared/utils/services/storage.service'
+import { AccountService } from './shared/utils/services/account.service'
 
 
 @NgModule({
@@ -22,7 +23,7 @@ import { StorageService } from './shared/utils/services/storage.service'
     HttpClientModule,
     CoreModule
   ],
-  providers: [StorageService],
+  providers: [StorageService, AccountService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

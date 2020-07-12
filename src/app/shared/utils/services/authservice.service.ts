@@ -28,12 +28,11 @@ export class AuthserviceService {
     })
   }
 
+
+
   succesfulLogin(authorizationValue: String){
     let tok = authorizationValue.substring(7);
     let nome = JSON.stringify(this.jwt.decodeToken(tok));
-    
-    
-    
     
     let user: LocalUser = {
       nome_usuario: JSON.parse(nome).sub,
