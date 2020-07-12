@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators, FormBuilder, FormGroup } from '@angular/forms';
+import {  Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { AuthserviceService } from 'src/app/shared/utils/services/authservice.service';
-import { Usuarios } from 'src/app/core/models/usuarios';
 import { Router } from '@angular/router';
-import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -31,13 +29,8 @@ export class LoginComponent implements OnInit {
   authenticated(){
     this.authService.authenticate(this.formulario.value)
     .subscribe(
-      sucess => {
-        this.authService.succesfulLogin(sucess.headers.get('Authorization'))
-        this.route.navigate(['/home'])
-        
-      },
+      sucess => this.route.navigate(['/home']),
       erro => ''
-      
     );
   }
 

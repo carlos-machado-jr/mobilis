@@ -23,6 +23,9 @@ export class AccountService {
     return this.http.get(`${API_CONFIG.baseurl}/usuarios`);
   }
 
+
+
+  
   getUserLoggedIn(){
     const token = this.storage.getAuthorizationToken();
     if(token != null && !this.jwt.isTokenExpired(token)){

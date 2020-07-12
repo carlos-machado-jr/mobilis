@@ -28,8 +28,12 @@ export class StorageService {
   }
 
   getAuthorizationToken(){
-    let user: LocalUser = this.getLocalUser();
-    let token = JSON.stringify(user.token);
-    return token;
+    if(this.getLocalUser() != null){
+      let user: LocalUser = this.getLocalUser();
+      let token = JSON.stringify(user.token);
+      return token;
+    }
+    return null;
+    
   }
 }

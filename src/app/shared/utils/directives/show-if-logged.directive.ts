@@ -14,31 +14,19 @@ export class ShowIfLoggedDirective implements OnInit {
     private account: AccountService
   ) { }
     ngOnInit(){
-      const valorDisplay = this.el
-      .nativeElement
-      .style
-      .display;
-      this.subscription = this.account.isLoggedIn.subscribe(
-        status => {
-          console.log(status);
-          
-          this.renderer.setStyle(this.el.nativeElement,
-            'display',
-            status ?  valorDisplay : 'none');
-        });
+      const displayValue = this.el.nativeElement.style.display;
+      this.getStatusLogin(displayValue);
     }
 
-    getStatusLogin(valorDisplay){
-      this.subscription = this.account.isLoggedIn.subscribe(
-        status => {
-          console.log(status);
-          
-          this.renderer.setStyle(this.el.nativeElement,
-            'display',
-            status ? valorDisplay : 'none');
-        });
-    }
+    
     ngOnDestroy(): void {
       this.subscription.unsubscribe();
+    }
+
+    private getStatusLogin(displayValue){
+      this.subscription = this.account.isLoggedIn.subscribe(
+        isLogged => {          
+          this.renderer.setStyle(this.el.nativeElement, 'display',  isLogged ? displayValue : 'none');
+        });
     }
 }

@@ -9,22 +9,44 @@
         <li class="nav-item"  [routerLinkActive]="['active']">
           <a class="nav-link" [routerLink]="['home']">Home <span class="sr-only">(página atual)</span></a>
         </li>
-        <li class="nav-item"  [routerLinkActive]="['active']">
-          <a class="nav-link" [routerLink]="['login']">Login</a>
-        </li>
+        
         <li class="nav-item dropdown" [routerLinkActive]="['active']">
           <a class="nav-link dropdown-toggle"   id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             proprietarios
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item"  [routerLink]="['proprietarios']">lista</a>
-            <a class="dropdown-item"  [routerLink]="['#']">Outra ação</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item"  [routerLink]="['#']">Algo mais aqui</a>
+            <a class="dropdown-item"  [routerLink]="['proprietarios']">Listagem Completa</a>
+            <a class="dropdown-item"  [routerLink]="['#']">Adicionar</a>
+            <a class="dropdown-item"  [routerLink]="['#']">Ativados</a>
+            <a class="dropdown-item"  [routerLink]="['#']">Desativados</a>
+            <a class="dropdown-item"  [routerLink]="['#']">Excluidos</a>
+
           </div>
         </li>
-       
+        <li class="nav-item dropdown" [routerLinkActive]="['active']">
+          <a class="nav-link dropdown-toggle"   id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Usuarios
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item"  [routerLink]="['#']">Listagem Completa</a>
+            <a class="dropdown-item"  [routerLink]="['#']">Adicionar</a>
+            <a class="dropdown-item"  [routerLink]="['#']">Ativados</a>
+            <a class="dropdown-item"  [routerLink]="['#']">Desativados</a>
+            <a class="dropdown-item"  [routerLink]="['#']">Excluidos</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown" [routerLinkActive]="['active']">
+          <a class="nav-link dropdown-toggle"   id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            conta
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item"  [routerLink]="['#']">Perfil</a>
+            <a class="dropdown-item"  [routerLink]="['#']">Outra ação</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item"   (click)= "logout()" >Logout</a>
+          </div>
+        </li>
       </ul>
-     
+        
     </div>
   </nav>

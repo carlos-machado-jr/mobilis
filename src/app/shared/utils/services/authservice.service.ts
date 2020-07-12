@@ -10,6 +10,7 @@ import { StorageService } from './storage.service';
 import { tap } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
 import { AccountService } from './account.service';
+import { Router } from '@angular/router';
 
 
 
@@ -25,34 +26,44 @@ export class AuthserviceService {
   constructor(
     private http: HttpClient,
     private storage: StorageService, 
-    private account: AccountService
+    private account: AccountService,
+    private router: Router
     ) { }
 
   authenticate(usuario: any){
     return this.http.post(`${API_CONFIG.baseurl}/login`, usuario, {
       observe: 'response',
       responseType: 'text'
-    });
+    }).pipe(
+      tap(response => this.succesfulLogin(response.headers.get('Authorization')))
+    );
   }
 
 
 
   succesfulLogin(authorizationValue: String){
-    let tok = authorizationValue.substring(7);
-    let nome = JSON.stringify(this.jwt.decodeToken(tok));
-    let user: LocalUser = {
-      nome_usuario: JSON.parse(nome).sub,
-      token: tok
+    if(authorizationValue != null){
+      let user = this.extractToken(authorizationValue.substring(7));
+      this.storage.setLocalUser(user);
+      this.account.isLoggedIn.next(true);
     }
-
-    this.storage.setLocalUser(user);
-    this.account.isLoggedIn.next(true);
+    return null;
   }
 
   logout(){
     this.storage.setLocalUser(null);
     this.account.isLoggedIn.next(false);
+    this.router.navigate(['login'])
 
   }
- 
+  
+
+  private extractToken(token: any){
+    let nome =  JSON.stringify(this.jwt.decodeToken(token))
+    let user: LocalUser = {
+      nome_usuario: JSON.parse(nome).sub,
+      token: token
+    }
+    return user;
+  }
 }
