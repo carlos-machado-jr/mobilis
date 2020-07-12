@@ -1,9 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { AccountService } from '../../utils/services/account.service';
-import { Usuarios } from 'src/app/core/models/usuarios';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-table',
@@ -11,16 +10,18 @@ import { Usuarios } from 'src/app/core/models/usuarios';
   styleUrls: ['./table.component.css']
 })
 export class TableComponent  extends MatPaginatorIntl implements OnInit {
-  displayedColumns: string[] = ['id', 'nome_usuario', 'email', 'nip_responsavel', 'permissao'];
-  dataSource: MatTableDataSource<any>;
+  
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   
-  constructor(
-    
-    private account: AccountService
-    
-    ) { 
+  // é necessário passar as colunas como parametro!
+  @Input() displayedColumns: String[];
+  // é necessário passar os dados como observable da requisição!
+  @Input() $data: Observable<any>;
+
+  dataSource: MatTableDataSource<any>;
+
+  constructor() { 
       super();
       
       this.translatePaginator();
@@ -28,13 +29,17 @@ export class TableComponent  extends MatPaginatorIntl implements OnInit {
      }
 
   ngOnInit() {
-    this.getUsers();
+   if(this.$data != null){
+       this.getDataSource();
+       this.columnsIsNull();
+   }
+  
    
   }
 
-  getUsers(){
-    this.account.findByAll().subscribe((user: Usuarios[]) =>{
-      this.dataSource.data = user
+  getDataSource(){
+    this.$data.subscribe((data: any[]) =>{
+      this.dataSource.data = data
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
@@ -48,6 +53,11 @@ export class TableComponent  extends MatPaginatorIntl implements OnInit {
     }
   }
 
+  private columnsIsNull(){
+    if(this.displayedColumns == null){
+      console.error("É necessario passar as colunas como parametro!");
+     }
+  }
   private translatePaginator(){
       // paginator tradução
       this.itemsPerPageLabel = 'Itens por pagina';

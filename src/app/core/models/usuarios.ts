@@ -5,4 +5,6 @@ export interface Usuarios {
     senha: String;
     nip_responsavel: String;
     permissao: String;
+
+    
 }

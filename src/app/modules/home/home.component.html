@@ -1,7 +1,10 @@
 <h4>Bem vindo {{ usuario }}</h4>
 
 
-  
-  <app-table></app-table>
+<app-table 
+    [displayedColumns]="columns"
+    [$data]="$account"
+    
+    ></app-table>  
 
 
