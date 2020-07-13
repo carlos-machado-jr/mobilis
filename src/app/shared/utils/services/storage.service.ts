@@ -39,6 +39,23 @@ export class StorageService {
     
   }
 
+  setUser(usuario: Usuarios){
+    if(usuario == null){
+      localStorage.removeItem(STORAGE_KEYS.usuarios);
+    } else {
+      localStorage.setItem(STORAGE_KEYS.usuarios, JSON.stringify(usuario));
+    }
+
+  }
+
+  getUser(){
+    let user = localStorage.getItem(STORAGE_KEYS.usuarios);
+    if(user == null){
+      return null
+    } else {
+      return JSON.parse(user);
+    }
+  }
     
     
     

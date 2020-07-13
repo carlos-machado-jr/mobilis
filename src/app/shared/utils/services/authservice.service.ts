@@ -11,6 +11,7 @@ import { tap } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
 import { AccountService } from './account.service';
 import { Router } from '@angular/router';
+import { SubjectSubscriber } from 'rxjs/internal/Subject';
 
 
 
@@ -20,7 +21,6 @@ import { Router } from '@angular/router';
 export class AuthserviceService {
 
   jwt = new JwtHelperService();
- 
 
 
   constructor(
@@ -49,7 +49,8 @@ export class AuthserviceService {
       this.storage.setLocalUser(user);
       user = this.storage.getLocalUser();
       this.account.isLoggedIn.next(true);
-      this.account.findByPerfil(user.nome_usuario).subscribe(console.log);
+
+      this.account.findByPerfil(user.nome_usuario).subscribe((user: Usuarios) => this.storage.setUser(user));
     }
     
     return null;
@@ -57,6 +58,8 @@ export class AuthserviceService {
 
   logout(){
     this.storage.setLocalUser(null);
+    this.storage.setUser(null);
+    localStorage.clear();
     this.account.isLoggedIn.next(false);
     this.router.navigate(['login'])
 

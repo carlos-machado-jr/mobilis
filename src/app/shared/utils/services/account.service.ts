@@ -12,6 +12,7 @@ import { Usuarios } from 'src/app/core/models/usuarios';
 export class AccountService {
   jwt = new JwtHelperService();
   isLoggedIn = new BehaviorSubject<boolean>(false);
+
   
   constructor(
     private http: HttpClient,

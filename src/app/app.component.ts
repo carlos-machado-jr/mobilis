@@ -11,15 +11,18 @@ import { Usuarios } from './core/models/usuarios';
 })
 export class AppComponent {
   title = 'mobilis';
-  usuario: Usuarios;
+  usuario: any;
   constructor(
-    private account: AccountService,
-    private storage: StorageService
-    ){}
-
-  ngOnInit(){
+    private auth: AuthserviceService,
+    private storage: StorageService,
+    private account: AccountService
     
-
+    ){
+    }
+  ngOnInit() {
+    
+    
+    
   }
 
   
