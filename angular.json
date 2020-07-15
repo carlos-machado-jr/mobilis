@@ -131,5 +131,8 @@
       }
     }
   },
-  "defaultProject": "mobilis"
+  "defaultProject": "mobilis",
+  "cli": {
+    "analytics": false
+  }
 }
