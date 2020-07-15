@@ -47,10 +47,8 @@ export class AuthserviceService {
     if(authorizationValue != null){
       let user = this.extractToken(authorizationValue.substring(7));
       this.storage.setLocalUser(user);
-      user = this.storage.getLocalUser();
-      this.account.isLoggedIn.next(true);
 
-      this.account.findByPerfil(user.nome_usuario).subscribe((user: Usuarios) => this.storage.setUser(user));
+      // this.account.findByPerfil(user.nome_usuario).subscribe((user: Usuarios) => this.storage.setUser(user));
     }
     
     return null;

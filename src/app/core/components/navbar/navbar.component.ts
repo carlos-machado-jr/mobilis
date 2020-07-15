@@ -4,6 +4,7 @@ import { AuthserviceService } from 'src/app/shared/utils/services/authservice.se
 import { Usuarios } from '../../models/usuarios';
 import { STORAGE_KEYS } from '../../config/storage_keys.config';
 import { StorageService } from 'src/app/shared/utils/services/storage.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -11,17 +12,26 @@ import { StorageService } from 'src/app/shared/utils/services/storage.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  usuario: any;
+  permissao: String;
+  usuario: Usuarios;
 
   constructor(
     private auth: AuthserviceService,
     private storage: StorageService,
+    private route: ActivatedRoute
     
     ){
     }
   ngOnInit() {
+    this.usuario = this.route.snapshot.data['usuario']
+    this.permissao = this.usuario.permissao
+    console.log(this.permissao);
     
-    this.usuario = this.storage.getUser();
+    // this.route.data.subscribe( usuario => {
+      
+    //   this.permissao = usuario.permissao;
+    // })
+
     
     
   }

@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { StorageService } from 'src/app/shared/utils/services/storage.service';
 import { Observable } from 'rxjs';
 import { AccountService } from 'src/app/shared/utils/services/account.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -14,11 +15,14 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private storage: StorageService,
+    private route: ActivatedRoute
     ) { 
       
      }
 
   ngOnInit() {
+    console.log(this.route.snapshot.data['usuario']);
+    
     let nome = this.storage.getLocalUser();
     this.usuario = nome.nome_usuario; 
   }

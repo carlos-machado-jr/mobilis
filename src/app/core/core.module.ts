@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ErrorInterceptorProvider } from './interceptors/error.interceptor'
 import { HeadersInterceptorProvider } from './interceptors/headers.interceptor'
 import { AuthGuard } from './guards/auth.guard'
+import { LoaderGuard } from './guards/loader.guard'
 
 
 
@@ -12,6 +13,6 @@ import { AuthGuard } from './guards/auth.guard'
   imports: [
     CommonModule 
   ],
-  providers: [HeadersInterceptorProvider,ErrorInterceptorProvider, AuthGuard]
+  providers: [HeadersInterceptorProvider,ErrorInterceptorProvider, AuthGuard, LoaderGuard]
 })
 export class CoreModule { }
