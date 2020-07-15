@@ -10,6 +10,7 @@ import { CoreModule } from './core/core.module'
 import { StorageService } from './shared/utils/services/storage.service'
 import { AccountService } from './shared/utils/services/account.service';
 import { ShowIfLoggedDirective } from './shared/utils/directives/show-if-logged.directive';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 
@@ -25,6 +26,7 @@ import { ShowIfLoggedDirective } from './shared/utils/directives/show-if-logged.
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    MatProgressSpinnerModule,
     CoreModule
   ],
   providers: [StorageService, AccountService],
