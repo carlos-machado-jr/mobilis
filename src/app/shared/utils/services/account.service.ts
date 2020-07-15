@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { API_CONFIG } from 'src/app/core/config/api.config';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { StorageService } from './storage.service';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { Usuarios } from 'src/app/core/models/usuarios';
 
 @Injectable({
@@ -12,6 +12,7 @@ import { Usuarios } from 'src/app/core/models/usuarios';
 export class AccountService {
   jwt = new JwtHelperService();
   isLoggedIn = new BehaviorSubject<boolean>(false);
+  login = new Subject<Boolean>();
 
   
   constructor(
@@ -37,5 +38,12 @@ export class AccountService {
       return true
     }
     return false
+  }
+
+  show() {
+    this.login.next(false);
+}
+  hide() {
+    this.login.next(true);
   }
 }

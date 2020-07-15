@@ -23,9 +23,8 @@ export class NavbarComponent implements OnInit {
     ){
     }
   ngOnInit() {
-    this.usuario = this.route.snapshot.data['usuario']
-    this.permissao = this.usuario.permissao
-    console.log(this.permissao);
+    
+    this.usuario = this.storage.getUser();
     
     // this.route.data.subscribe( usuario => {
       
