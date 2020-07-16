@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 // services
 import { AccountService } from './utils/services/account.service';
 import { StorageService } from './utils/services/storage.service';
+import { CrudService } from './utils/services/crud.service';
 
 
 
@@ -16,6 +17,6 @@ import { StorageService } from './utils/services/storage.service';
   imports: [
     CommonModule,
   ],
-  providers: [StorageService, AccountService]
+  providers: [StorageService, AccountService, CrudService]
 })
 export class SharedModule { }
