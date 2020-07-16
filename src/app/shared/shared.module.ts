@@ -17,6 +17,6 @@ import { CrudService } from './utils/services/crud.service';
   imports: [
     CommonModule,
   ],
-  providers: [StorageService, AccountService, CrudService]
+  providers: [StorageService, AccountService]
 })
 export class SharedModule { }

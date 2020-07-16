@@ -3,17 +3,18 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { API_CONFIG } from 'src/app/core/config/api.config';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class CrudService<data> {
+
+export class CrudService<T> {
+
 
   
   
-  constructor(private http: HttpClient) { }
+  constructor(
+    protected http: HttpClient, 
+    protected url: string) { }
 
-  save(item: data): Observable<data>{
+  save(item: T): Observable<T>{
     
-    return this.http.post<data>(`${API_CONFIG.baseurl}/usuarios`, item)
+    return this.http.post<T>(API_CONFIG.baseurl + this.url, item)
   }
 }

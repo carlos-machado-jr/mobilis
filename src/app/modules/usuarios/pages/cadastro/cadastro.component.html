@@ -1,1 +1,38 @@
-<p>cadastro works!</p>
+<div class="row">
+    <form class="example-form" [formGroup]="formulario" (ngSubmit)="save()">
+    
+        <mat-form-field appearance="outline" id="nome_usuario">
+            <mat-label> Nome de usuario</mat-label>
+            <input matInput placeholder="Digite seu nome de usuario" formControlName="nome_usuario">
+            <mat-error>Insira o nome de usuario!</mat-error>
+        
+        </mat-form-field>
+    
+        <mat-form-field appearance="outline" id="email">
+            <mat-label> Email</mat-label>
+            <input matInput placeholder="Digite seu email" formControlName="email">
+            <mat-error>Insira o email!</mat-error>
+        
+        </mat-form-field>
+        <mat-form-field appearance="outline" id="senha">
+            <mat-label> senha</mat-label>
+            <input matInput placeholder="Digite sua senha" formControlName="senha">
+            <mat-error>Insira a senha!</mat-error>
+        
+        </mat-form-field>
+        <mat-form-field appearance="outline" id="nip_responsavel">
+            <mat-label> nip </mat-label>
+            <input matInput placeholder="Digite seu email" formControlName="nip_responsavel">
+            <mat-error>Insira o email!</mat-error>
+        
+        </mat-form-field>
+        <mat-form-field appearance="outline" id="permissao">
+            <mat-label> permissao</mat-label>
+            <input matInput placeholder="Digite seu email" formControlName="permissao">
+            <mat-error>Insira o email!</mat-error>
+        
+        </mat-form-field>
+        <button  mat-raised-button color="primary" type="submit"> Enviar </button>
+      </form>
+</div>
+  
