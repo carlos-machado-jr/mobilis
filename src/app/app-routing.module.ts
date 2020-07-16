@@ -8,14 +8,11 @@ const routes: Routes = [
  
   { path: 'login', loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule) },
   
-  { path: 'home', loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule) ,
-      canActivate:[AuthGuard], resolve: {usuario: LoaderGuard} },
-  { path: 'proprietarios', 
-      loadChildren: () => import('./modules/proprietarios/proprietarios.module').then(m => m.ProprietariosModule) ,
-      canActivate:[AuthGuard]},
+  { path: 'home', loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule) , canActivate:[AuthGuard], resolve: {usuario: LoaderGuard} },
   
-  { path: 'usuarios', loadChildren: () => import('./modules/usuarios/usuarios.module').then(m => m.UsuariosModule)  ,
-      canActivate:[AuthGuard]},
+  { path: 'proprietarios', loadChildren: () => import('./modules/proprietarios/proprietarios.module').then(m => m.ProprietariosModule) ,canActivate:[AuthGuard]},
+  
+  { path: 'usuarios', loadChildren: () => import('./modules/usuarios/usuarios.module').then(m => m.UsuariosModule) ,canActivate:[AuthGuard]},
   
   { path: '', pathMatch: 'full', redirectTo: 'home'}
  

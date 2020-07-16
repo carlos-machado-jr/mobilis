@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { tap, catchError, finalize } from 'rxjs/operators';
+import {  catchError, finalize } from 'rxjs/operators';
 
 import {
   HttpRequest,
@@ -20,11 +20,11 @@ export class ErrorInterceptor implements HttpInterceptor {
   constructor(private account: AccountService) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-      this.account.show();
+      this.account.showLoading();
       return next.handle(request)
       .pipe(
         catchError(this.handleError),
-        finalize(()=> this.account.hide())
+        finalize(()=> this.account.hideLoading())
         );
   }
   private handleError(error: HttpErrorResponse) {

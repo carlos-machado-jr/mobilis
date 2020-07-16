@@ -1,41 +1,26 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { AccountService } from 'src/app/shared/utils/services/account.service';
+import { Component, DoCheck } from '@angular/core';
 import { AuthserviceService } from 'src/app/shared/utils/services/authservice.service';
 import { Usuarios } from '../../models/usuarios';
-import { STORAGE_KEYS } from '../../config/storage_keys.config';
 import { StorageService } from 'src/app/shared/utils/services/storage.service';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit {
-  permissao: String;
+export class NavbarComponent implements  DoCheck {
   usuario: Usuarios;
 
   constructor(
     private auth: AuthserviceService,
-    private storage: StorageService,
-    private route: ActivatedRoute
-    
-    ){
-    }
-  ngOnInit() {
-    
+    private storage: StorageService
+    ){}
+   
+
+  ngDoCheck(){
     this.usuario = this.storage.getUser();
     
-    // this.route.data.subscribe( usuario => {
-      
-    //   this.permissao = usuario.permissao;
-    // })
-
-    
-    
   }
-
-  
 
   logout(){
     this.auth.logout();

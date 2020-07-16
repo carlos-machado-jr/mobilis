@@ -4,15 +4,14 @@ import { API_CONFIG } from 'src/app/core/config/api.config';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { StorageService } from './storage.service';
 import { BehaviorSubject, Subject } from 'rxjs';
-import { Usuarios } from 'src/app/core/models/usuarios';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccountService {
-  jwt = new JwtHelperService();
-  isLoggedIn = new BehaviorSubject<boolean>(false);
-  login = new Subject<Boolean>();
+  public jwt = new JwtHelperService();
+  public isLoggedIn = new BehaviorSubject<boolean>(false);
+  public isLoading = new BehaviorSubject<boolean>(false);
 
   
   constructor(
@@ -22,17 +21,17 @@ export class AccountService {
   ) { }
   
 
-  findByAll(){
+  public findByAll(){
     return this.http.get(`${API_CONFIG.baseurl}/usuarios`);
   }
 
-  findByPerfil(user: String){
+  public findByPerfil(user: String){
     return this.http.get(`${API_CONFIG.baseurl}/usuarios/perfil?value=${user}`);
   }
 
 
 
-  getUserLoggedIn(){
+  public getUserLoggedIn(){
     const token = this.storage.getAuthorizationToken();
     if(token != null && !this.jwt.isTokenExpired(token)){
       return true
@@ -40,10 +39,10 @@ export class AccountService {
     return false
   }
 
-  show() {
-    this.login.next(true);
+  public showLoading() {
+    this.isLoading.next(true);
 }
-  hide() {
-    this.login.next(false);
+  public hideLoading() {
+    this.isLoading.next(false);
   }
 }

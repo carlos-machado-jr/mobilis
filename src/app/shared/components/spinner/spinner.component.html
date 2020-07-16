@@ -1,9 +1,10 @@
-<div class="overlay" *ngIf="isLogg | async">
+<div class="overlay" *ngIf="isLoading | async">
     <mat-progress-spinner
     class="spinner"
-    color="primary"
-    mode="indeterminate"
-    value="50">
+    [color]="color"
+    [mode]="mode"
+    [value]="value"
+    >
     </mat-progress-spinner>
 
 </div>

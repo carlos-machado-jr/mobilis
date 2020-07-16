@@ -11,8 +11,9 @@ import { LoaderGuard } from './guards/loader.guard'
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule 
+    CommonModule
   ],
+  exports: [],
   providers: [HeadersInterceptorProvider,ErrorInterceptorProvider, AuthGuard, LoaderGuard]
 })
 export class CoreModule { }

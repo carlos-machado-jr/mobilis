@@ -8,15 +8,18 @@ import { AccountService } from '../../utils/services/account.service';
   styleUrls: ['./spinner.component.css']
 })
 export class SpinnerComponent implements OnInit {
-  isLogg: Subject<Boolean>;
+  public isLoading: Subject<Boolean>;
+  public color = "primary";
+  public mode = "indeterminate";
+  public value = '';
+
   constructor(
     private account: AccountService
 
   ) { }
 
   ngOnInit(): void {
-    this.isLogg = this.account.login;
-
+    this.isLoading = this.account.isLoading;
   }
 
 }
