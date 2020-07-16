@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { Usuarios } from 'src/app/core/models/usuarios';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit {
-
+  usuarios = []
   formulario: FormGroup;
   @Input() $userService: Observable<any>;
   @Output() usuario = new EventEmitter()
@@ -25,10 +25,11 @@ export class FormComponent implements OnInit {
     
   }
   ngDoCheck(){
-    this.usuario.next(this.formulario.value);
+    console.log("check");
+    
   }
   save(){
-    
+    this.usuario.next(this.formulario.value);
     this.$userService.subscribe(
       success=> console.log(this.route.navigate(['usuarios'])),
       err => console.log(err)
@@ -36,6 +37,14 @@ export class FormComponent implements OnInit {
 
       
     );
+  }
+  ngAfterContentInit(){
+    console.log("init");
+    
+  }
+  ngAfterContentChecked(){
+    console.log("checked");
+    this.usuario.next(this.usuarios);
   }
   createFormulario(){
     this.formulario = this.formBuilder.group({
