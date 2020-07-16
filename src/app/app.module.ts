@@ -7,10 +7,11 @@ import { NavbarComponent } from './core/components/navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { CoreModule } from './core/core.module'
-import { StorageService } from './shared/utils/services/storage.service'
-import { AccountService } from './shared/utils/services/account.service';
-import { ShowIfLoggedDirective } from './shared/utils/directives/show-if-logged.directive';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { SharedModule } from './shared/shared.module';
+import { SpinnerModule } from './shared/components/spinner/spinner.module';
+import { ShowIfLoggedDirective } from './shared/utils/directives/show-if-logged.directive';
+
 
 
 
@@ -18,6 +19,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
   declarations: [
     AppComponent,
     NavbarComponent,
+    // directives
     ShowIfLoggedDirective,
     
   ],
@@ -27,9 +29,11 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     BrowserAnimationsModule,
     HttpClientModule,
     MatProgressSpinnerModule,
-    CoreModule
+    CoreModule,
+    SpinnerModule,
+    SharedModule
   ],
-  providers: [StorageService, AccountService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
