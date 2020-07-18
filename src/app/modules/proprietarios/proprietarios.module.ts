@@ -7,17 +7,28 @@ import { ProprietariosComponent } from './pages/lista/proprietarios.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CoreModule } from 'src/app/core/core.module';
 import { TableModule } from 'src/app/shared/components/table/table.module';
-import { ProprietariosGuard } from '../../core/guards/proprietarios.guard'
+import { ProprietariosGuard } from '../../core/guards/proprietarios.guard';
+import { ProprietariosFormComponent } from './pages/proprietarios-form/proprietarios-form.component'
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
-  declarations: [ProprietariosComponent],
+  declarations: [ProprietariosComponent, ProprietariosFormComponent],
   imports: [
     CommonModule,
     ProprietariosRoutingModule,
     HttpClientModule,
     CoreModule,
-    TableModule
+    TableModule,
+
+    MatInputModule,
+    MatFormFieldModule,
+    MatCardModule,
+    MatButtonModule
+
   ],
   providers:[ProprietarioService, ProprietariosGuard]
 })

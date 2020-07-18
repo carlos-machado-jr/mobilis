@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ProprietariosService } from 'src/app/shared/utils/services/proprietarios.service';
-import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { Proprietarios } from 'src/app/core/models/proprietarios';
+import { Veiculos } from 'src/app/core/models/veiculos';
 
 @Component({
   selector: 'app-proprietarios',
@@ -18,6 +18,7 @@ export class ProprietariosComponent implements OnInit {
 
   ngOnInit(): void {
    this.data = this.route.snapshot.data['proprietarios']
+   
   }
   
 }

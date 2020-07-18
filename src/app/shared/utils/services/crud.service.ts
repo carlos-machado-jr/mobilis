@@ -18,10 +18,12 @@ export class CrudService<T> {
   public findAll(): Observable<T[]>{
       return this.http.get<T[]>(API_CONFIG.baseurl + this.url);
   }    
-  public findAllUsuarioComum(): Observable<T[]>{
-      return this.http.get<T[]>(API_CONFIG.baseurl + this.url + '/comuns')
+  public findAllActivated(): Observable<T[]>{
+      return this.http.get<T[]>(API_CONFIG.baseurl + this.url + '/ativados')
   }
-  
+  public findAllDisabled(): Observable<T[]>{
+    return this.http.get<T[]>(API_CONFIG.baseurl + this.url + '/desativados')
+}
   
   public save(item: T): Observable<T>{
     
