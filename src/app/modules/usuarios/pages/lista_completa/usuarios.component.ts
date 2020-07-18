@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from 'src/app/shared/utils/services/account.service';
 import { Observable } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+import { UsuariosService } from '../../services/usuarios.service';
 
 @Component({
   selector: 'app-usuarios',
@@ -9,19 +11,20 @@ import { Observable } from 'rxjs';
 })
 export class UsuariosComponent implements OnInit {
 
-  $account: Observable<any>;
+  data: any[];
   columns: String[];
  
   usuario: String = '';
 
   constructor(
-    private account: AccountService
+    private route: ActivatedRoute
     ) { 
       
      }
 
   ngOnInit() {
     this.columns = ['id', 'nome_usuario', 'email', 'nip_responsavel', 'permissao'];
-    this.$account = this.account.findByAll();
+    this.data = this.route.snapshot.data['usuario'];
+    
   }
 }

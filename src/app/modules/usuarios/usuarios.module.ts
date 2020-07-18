@@ -11,6 +11,7 @@ import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { UsuariosGuard } from 'src/app/core/guards/usuarios.guard';
 
 
 
@@ -27,6 +28,6 @@ import { MatInputModule } from '@angular/material/input';
     ReactiveFormsModule,
     MatInputModule
   ],
-  providers:[UsuariosService]
+  providers:[UsuariosService, UsuariosGuard]
 })
 export class UsuariosModule { }

@@ -21,9 +21,7 @@ export class AccountService {
   ) { }
   
 
-  public findByAll(){
-    return this.http.get(`${API_CONFIG.baseurl}/usuarios`);
-  }
+  
 
   public findByPerfil(user: String){
     return this.http.get(`${API_CONFIG.baseurl}/usuarios/perfil?value=${user}`);

@@ -13,8 +13,20 @@ export class CrudService<T> {
     protected http: HttpClient, 
     protected url: string) { }
 
-  save(item: T): Observable<T>{
+
+
+  public findAll(): Observable<T[]>{
+      return this.http.get<T[]>(API_CONFIG.baseurl + this.url);
+  }    
+  public findAllUsuarioComum(): Observable<T[]>{
+      return this.http.get<T[]>(API_CONFIG.baseurl + this.url + '/comuns')
+  }
+  
+  
+  public save(item: T): Observable<T>{
     
     return this.http.post<T>(API_CONFIG.baseurl + this.url, item)
   }
+
+  
 }

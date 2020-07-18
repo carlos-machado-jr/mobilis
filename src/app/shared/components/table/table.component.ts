@@ -3,6 +3,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { Observable } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-table',
@@ -17,11 +18,13 @@ export class TableComponent  extends MatPaginatorIntl implements OnInit {
   // é necessário passar as colunas como parametro!
   @Input() displayedColumns: String[];
   // é necessário passar os dados como observable da requisição!
-  @Input() $data: Observable<any>;
+  @Input() data: any[];
 
   dataSource: MatTableDataSource<any>;
 
-  constructor() { 
+  constructor(
+    private route: ActivatedRoute
+  ) { 
       super();
       
       this.translatePaginator();
@@ -29,7 +32,7 @@ export class TableComponent  extends MatPaginatorIntl implements OnInit {
      }
 
   ngOnInit() {
-   if(this.$data != null){
+   if(this.data != null){
        this.getDataSource();
        this.columnsIsNull();
    }
@@ -38,11 +41,10 @@ export class TableComponent  extends MatPaginatorIntl implements OnInit {
   }
 
   getDataSource(){
-    this.$data.subscribe((data: any[]) =>{
-      this.dataSource.data = data
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
-    });
+    this.dataSource.data = this.data
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+    
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
