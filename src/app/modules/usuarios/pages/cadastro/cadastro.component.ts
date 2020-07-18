@@ -11,18 +11,36 @@ import { Observable } from 'rxjs';
   styleUrls: ['./cadastro.component.css']
 })
 export class CadastroComponent implements OnInit {
-  $userService: Observable<any>;
   usuario: Usuarios;
+  formulario: FormGroup;
   constructor(
     private userService: UsuariosService,
+    private formBuilder: FormBuilder,
+    private route: Router
+
     ) { }
 
   ngOnInit(): void {
     
-    
+    this.createFormulario();
   }
-  createUser(event){
-    this.$userService = this.userService.save(event);
-  }
+  
+  save(){
+    this.userService.save(this.formulario.value).subscribe(
+      success=> console.log(this.route.navigate(['usuarios'])),
+      err => console.log(err)
+      
 
+      
+    );
+  }
+  createFormulario(){
+    this.formulario = this.formBuilder.group({
+      nome_usuario:[''],
+      email:[''],
+      senha:[''],
+      nip_responsavel:[''],
+      permissao:['']
+    });
+  }
 }
