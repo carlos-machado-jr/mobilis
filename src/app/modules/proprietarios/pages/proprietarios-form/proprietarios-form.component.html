@@ -2,15 +2,54 @@
     <mat-card class="col-9">
         <mat-card-content>
             <mat-card-title>Cadastro</mat-card-title>
-    <form class="example-form" >
+    <form class="example-form" [formGroup]="formulario" >
     
-        <mat-form-field appearance="outline" id="nome_usuario">
+        <mat-form-field appearance="outline" id="nome">
             <mat-label> Nome de usuario</mat-label>
-            <input matInput placeholder="Digite seu nome de usuario" >
+            <input matInput placeholder="Digite seu nome de usuario" formControlName="nome">
             <mat-error>Insira o nome de usuario!</mat-error>
         
         </mat-form-field>
-    
+        <mat-form-field appearance="outline" id="email">
+            <mat-label> Email </mat-label>
+            <input matInput placeholder="Digite seu email" formControlName="email">
+            <mat-error>Insira um email valido!</mat-error>
+        
+        </mat-form-field>
+        <mat-form-field appearance="outline" id="nip">
+            <mat-label> NIP </mat-label>
+            <input matInput placeholder="Digite seu NIP." formControlName="nip">
+            <mat-error>Insira um NIP valido!</mat-error>
+        
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline" id="cnh">
+            <mat-label> CNH </mat-label>
+            <input matInput placeholder="Digite seu NIP." formControlName="cnh">
+            <mat-error>Insira um CNH valido!</mat-error>
+        
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" id="nip">
+            <mat-label> Setor </mat-label>
+            <input matInput placeholder="Digite seu NIP." formControlName="setor">
+            <mat-error>Insira um setor valido!</mat-error>
+        
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" id="posto">
+            <mat-label> Posto </mat-label>
+            <input matInput placeholder="Digite seu NIP." formControlName="posto">
+            <mat-error>Insira um posto valido!</mat-error>
+        
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" id="cartao">
+            <mat-label> Cartao </mat-label>
+            <input matInput placeholder="Digite seu NIP." formControlName="cartao">
+            <mat-error>Insira um cartao valido!</mat-error>
+        
+        </mat-form-field>
         
         <mat-card-actions>
         <button  mat-raised-button color="primary" type="submit"> Enviar </button>

@@ -23,7 +23,11 @@ export class CrudService<T> {
   }
   public findAllDisabled(): Observable<T[]>{
     return this.http.get<T[]>(API_CONFIG.baseurl + this.url + '/desativados')
-}
+  }
+  
+  public findById(id): Observable<T>{
+    return this.http.get<T>(API_CONFIG.baseurl + this.url + `/${id}`)
+  }
   
   public save(item: T): Observable<T>{
     

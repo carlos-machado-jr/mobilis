@@ -8,7 +8,7 @@ import { ProprietariosFormComponent } from './pages/proprietarios-form/proprieta
 const routes: Routes = [
   { path: 'ativados', component: ProprietariosComponent, resolve: {proprietarios: ProprietariosGuard} },
   { path: 'desativados', component: ProprietariosComponent, resolve: {proprietarios: ProprietariosGuard} },
-  { path: 'adicionar', component: ProprietariosFormComponent },
+  { path: 'adicionar', component: ProprietariosFormComponent, },
 
 
   

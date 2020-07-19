@@ -47,6 +47,9 @@ export class ProprietariosGuard implements Resolve<any> {
       case 'desativados':
         return this.proprietarioService.findAllDisabled();
         break;
+      case 'adicionar':
+        return this.proprietarioService.findById("1"); 
+        break;  
       default:
         return this.proprietarioService.findAll();
         

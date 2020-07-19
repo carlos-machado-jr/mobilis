@@ -16,9 +16,9 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item"  [routerLink]="['proprietarios']">Listagem Completa</a>
-            <a class="dropdown-item"  [routerLink]="['proprietarios/adicionar']">Adicionar</a>
-            <a class="dropdown-item"  [routerLink]="['proprietarios/ativados']">Ativados</a>
-            <a class="dropdown-item"  [routerLink]="['proprietarios/desativados']">Desativados</a>
+            <a *ngIf="usuario?.permissao != 'Usuario'" class="dropdown-item"  [routerLink]="['proprietarios/adicionar']">Adicionar</a>
+            <a *ngIf="usuario?.permissao == 'Administrador'" class="dropdown-item"  [routerLink]="['proprietarios/ativados']">Ativados</a>
+            <a *ngIf="usuario?.permissao == 'Administrador'" class="dropdown-item"  [routerLink]="['proprietarios/desativados']">Desativados</a>
 
           </div>
         </li>
@@ -28,9 +28,9 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item"  [routerLink]="['usuarios']">Listagem Completa</a>
-            <a class="dropdown-item"  [routerLink]="['usuarios/adicionar']">Adicionar</a>
-            <a class="dropdown-item"  [routerLink]="['#']">Ativados</a>
-            <a class="dropdown-item"  [routerLink]="['#']">Desativados</a>
+            <a *ngIf="usuario?.permissao != 'Usuario'" class="dropdown-item"  [routerLink]="['usuarios/adicionar']">Adicionar</a>
+            <a *ngIf="usuario?.permissao == 'Administrador'" class="dropdown-item"  [routerLink]="['#']">Ativados</a>
+            <a *ngIf="usuario?.permissao == 'Administrador'" class="dropdown-item"  [routerLink]="['#']">Desativados</a>
           </div>
         </li>
         
