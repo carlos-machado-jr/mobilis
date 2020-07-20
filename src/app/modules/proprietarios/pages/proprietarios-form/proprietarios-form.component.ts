@@ -20,8 +20,8 @@ export class ProprietariosFormComponent implements OnInit {
   public formulario: FormGroup;
   public veiculoFormArray: FormArray;
 
-  public proprietario: Proprietarios;
-  public veiculo: Veiculos;
+  public proprietario: Proprietarios = new Proprietarios();
+  public veiculo: Veiculos = new Veiculos();
   public veiculoLista: Veiculos[];
   public setorLista: Setor[];
   public postoLista: Posto[];
@@ -37,30 +37,48 @@ export class ProprietariosFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-      this.getProprietarios();
+      
       this.veiculoFormArray = new FormArray([]);
-      this.getMontadora();
-      this.getCor();
-      this.veiculoFormArray.push(this.createVeiculos());
+      
+      this.getProprietarios();
       this.createFormulario();
+      
+      this.veiculoFormArray = this.formulario.get('veiculos') as FormArray;
+      
+      if(this.veiculoLista){
+      
+      this.getVeiculos()
 
+      }else{
+      this.veiculoFormArray.push(this.createVeiculos());
+      }
+    
        
       
        
 
   }
- 
+
   getProprietarios(){
-    this.proprietario = this.proprietarioVazio();
+        
     if(this.route.snapshot.data['proprietarios']){
+      
       this.proprietario = this.route.snapshot.data['proprietarios']
+      this.veiculoLista = this.proprietario.veiculos;
+
     }
-    
+
     this.getSetor();
     this.getPosto();
+    this.getMontadora();
+    this.getCor();
   }
 
-  
+  getVeiculos(){
+        this.veiculoLista.forEach(data => {
+        this.veiculo = data;
+        this.veiculoFormArray.push(this.createVeiculos())})
+  }
   
   createFormulario(){
     this.formulario = this.formBuilder.group({
@@ -72,12 +90,12 @@ export class ProprietariosFormComponent implements OnInit {
       setor: [this.proprietario.setor, Validators.required],
       posto: [this.proprietario.posto, Validators.required],
       cartao: [this.proprietario.cartao, Validators.required],
-      veiculos: this.veiculoFormArray
+      veiculos: this.formBuilder.array([])
     });
   }
 
-  createVeiculos(){
-    this.veiculoVazio();
+  createVeiculos(): FormGroup {
+    
     return this.formBuilder.group({
       id: this.veiculo.id,
       modelo: [this.veiculo.modelo, Validators.required],
@@ -124,11 +142,5 @@ export class ProprietariosFormComponent implements OnInit {
         }))
       .subscribe();  
   }
-  private proprietarioVazio(): Proprietarios{
-    return { id: '', nome: '', email: '', nip: '', cnh:'', setor:'', posto:'', cartao: '', veiculos:[]};
-  }
-
-  private veiculoVazio(): Veiculos{
-    return { id: '', modelo: '', ano: '', placa: '', chassi:'', montadora:'', cor:''  };
-  }
+ 
 }

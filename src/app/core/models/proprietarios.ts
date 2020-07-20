@@ -1,5 +1,5 @@
 import { Veiculos } from './veiculos';
-export interface Proprietarios {
+export class Proprietarios {
     id: String;
     nome: String;
     email: String;
