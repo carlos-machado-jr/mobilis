@@ -1,5 +1,5 @@
 <div class="row">
-    <mat-card class="col-9">
+    <mat-card class="col-10">
         <mat-card-content>
             <mat-card-title>Cadastro</mat-card-title>
     <form class="example-form" [formGroup]="formulario" >
@@ -30,17 +30,23 @@
         
         </mat-form-field>
 
-        <mat-form-field appearance="outline" id="nip">
+        <mat-form-field appearance="outline" id="setor">
             <mat-label> Setor </mat-label>
-            <input matInput placeholder="Digite seu NIP." formControlName="setor">
-            <mat-error>Insira um setor valido!</mat-error>
+            <mat-select formControlName="setor">
+                <mat-option *ngFor="let s of setorLista" [value]="s.desc_setor" > 
+                  {{ s.desc_setor }}
+                </mat-option>
+            </mat-select>
         
         </mat-form-field>
 
         <mat-form-field appearance="outline" id="posto">
             <mat-label> Posto </mat-label>
-            <input matInput placeholder="Digite seu NIP." formControlName="posto">
-            <mat-error>Insira um posto valido!</mat-error>
+            <mat-select formControlName="setor">
+                <mat-option *ngFor="let p of postoLista" [value]="p.desc_posto" > 
+                  {{ p.desc_posto }}
+                </mat-option>
+            </mat-select>
         
         </mat-form-field>
 
@@ -51,6 +57,64 @@
         
         </mat-form-field>
         
+
+         <!-- veiculos -->
+
+
+         <!-- <h4 >Veiculo  <a  (click) = "incrementa()" class="adicionar"><i class="fas fa-plus-circle"></i></a></h4> -->
+         <div formArrayName="veiculos" *ngFor="let veiculo of veiculoFormArray.controls; let i = index">
+             <br>
+             <div [formGroupName]="i">
+             <mat-form-field appearance="outline" >
+                 <mat-label>Modelo</mat-label>
+                 <input matInput placeholder="Modelo do veiculo"  formControlName="modelo" >
+             </mat-form-field>
+
+             <mat-form-field appearance="outline">
+                     <mat-label>montadora</mat-label>
+                     <mat-select formControlName="montadora">
+                             <mat-option *ngFor="let m of montadoraLista" [value]="m.desc_montadora" > 
+                               {{ m.desc_montadora }}
+                             </mat-option>
+                     </mat-select>
+             </mat-form-field>
+
+             <mat-form-field appearance="outline" >
+                     <mat-label>Ano</mat-label>
+                     <input matInput placeholder="Ano"  formControlName="ano" >
+             </mat-form-field>
+
+             <mat-form-field appearance="outline" >
+                     <mat-label>Placa</mat-label>
+                     <input matInput placeholder="Placa"  formControlName="placa" >
+             </mat-form-field>
+
+             <mat-form-field appearance="outline" >
+                     <mat-label>Chassi</mat-label>
+                     <input matInput placeholder="Chassi"  formControlName="chassi" >
+             </mat-form-field>
+
+             <mat-form-field appearance="outline" >
+                     <mat-label>Cor</mat-label>
+                     <mat-select formControlName="cor">
+                             <mat-option *ngFor="let c of corLista" [value]="c.desc_cor" > 
+                               {{ c.desc_cor }}
+                             </mat-option>
+                     </mat-select>
+             </mat-form-field>
+
+
+             </div>
+         </div>
+
+
+
+
+
+
+
+
+
         <mat-card-actions>
         <button  mat-raised-button color="primary" type="submit"> Enviar </button>
 

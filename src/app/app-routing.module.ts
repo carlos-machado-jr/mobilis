@@ -14,7 +14,10 @@ const routes: Routes = [
   
   { path: 'usuarios', loadChildren: () => import('./modules/usuarios/usuarios.module').then(m => m.UsuariosModule) ,canActivate:[AuthGuard]},
   
-  { path: '', pathMatch: 'full', redirectTo: 'home'}
+  { path: 'veiculos', loadChildren: () => import('./modules/veiculos/veiculos.module').then(m => m.VeiculosModule) },
+  
+  { path: '', pathMatch: 'full', redirectTo: 'home'},
+ 
  
 ];
 
