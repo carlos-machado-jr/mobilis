@@ -59,6 +59,13 @@ export class ProprietariosFormComponent implements OnInit {
 
   }
 
+  onSubmit(){
+    if(this.formulario.valid){
+      this.proprietario = this.formulario.value
+      this.proprietarioService.save(this.proprietario).subscribe();
+    }
+    
+  }
   getProprietarios(){
         
     if(this.route.snapshot.data['proprietarios']){

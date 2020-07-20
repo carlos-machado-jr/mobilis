@@ -2,7 +2,7 @@
     <mat-card class="col-10">
         <mat-card-content>
             <mat-card-title>Cadastro</mat-card-title>
-    <form class="example-form" [formGroup]="formulario" >
+    <form class="example-form" [formGroup]="formulario" (ngSubmit)="onSubmit()" >
     
         <mat-form-field appearance="outline" id="nome">
             <mat-label> Nome de usuario</mat-label>
