@@ -19,6 +19,7 @@ export class ProprietariosComponent implements OnInit {
   ngOnInit(): void {
    this.data = this.route.snapshot.data['proprietarios']
    
+   
   }
   
 }

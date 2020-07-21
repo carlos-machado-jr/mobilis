@@ -19,6 +19,9 @@ export class TableComponent  extends MatPaginatorIntl implements OnInit {
   @Input() displayedColumns: String[];
   // é necessário passar os dados como observable da requisição!
   @Input() data: any[];
+  @Input() edit: boolean;
+  @Input() delete: boolean;
+
 
   dataSource: MatTableDataSource<any>;
 
@@ -32,6 +35,12 @@ export class TableComponent  extends MatPaginatorIntl implements OnInit {
      }
 
   ngOnInit() {
+    if(this.edit){
+    this.displayedColumns.push('editar');
+    }
+    if(this.delete){
+    this.displayedColumns.push('apagar');
+    }
    if(this.data != null){
        this.getDataSource();
        this.columnsIsNull();
