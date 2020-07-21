@@ -15,6 +15,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatFormFieldModule,
     MatCardModule,
     MatButtonModule,
-    MatSelectModule
+    MatSelectModule,
+    MatIconModule
 
   ],
   providers:[ProprietarioService, ProprietariosGuard]

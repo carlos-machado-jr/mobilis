@@ -59,13 +59,19 @@
         
 
         
+        <br>
 
           <!-- veiculos -->
-
-
-         <!-- <h4 >Veiculo  <a  (click) = "incrementa()" class="adicionar"><i class="fas fa-plus-circle"></i></a></h4> -->
+          
+        <h3><span class="title-veiculos">Veiculos</span>
+            <button mat-icon-button matSuffix color="primary" (click) = "addVeiculos()">
+                <mat-icon>add_circle_outline</mat-icon>
+             </button>
+        </h3>
+          
          <div formArrayName="veiculos" *ngFor="let veiculo of veiculoFormArray.controls; let i = index">
-            <br>
+            <hr>
+            <h5 class="label-veiculos">Veiculo {{i + 1}}</h5>
             <div [formGroupName]="i">
             <mat-form-field appearance="outline" >
                 <mat-label>Modelo</mat-label>

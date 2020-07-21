@@ -59,14 +59,21 @@ export class ProprietariosFormComponent implements OnInit {
 
   }
 
-  onSubmit(){
+  public onSubmit(){
     if(this.formulario.valid){
       this.proprietario = this.formulario.value
       this.proprietarioService.save(this.proprietario).subscribe();
     }
     
   }
-  getProprietarios(){
+  public addVeiculos(){
+    if (this.formulario.valid && this.veiculoFormArray.valid){
+      this.veiculoFormArray.push(this.createVeiculos());
+    } else {
+      alert("Preencha todos os campos!")
+    }
+  }
+  private getProprietarios(){
         
     if(this.route.snapshot.data['proprietarios']){
       
@@ -81,13 +88,13 @@ export class ProprietariosFormComponent implements OnInit {
     this.getCor();
   }
 
-  getVeiculos(){
+  private getVeiculos(){
         this.veiculoLista.forEach(data => {
         this.veiculo = data;
         this.veiculoFormArray.push(this.createVeiculos())})
   }
   
-  createFormulario(){
+  private createFormulario(){
     this.formulario = this.formBuilder.group({
       id: this.proprietario.id,
       nome: [this.proprietario.nome, Validators.required],
@@ -101,7 +108,7 @@ export class ProprietariosFormComponent implements OnInit {
     });
   }
 
-  createVeiculos(): FormGroup {
+  private createVeiculos(): FormGroup {
     
     return this.formBuilder.group({
       id: this.veiculo.id,
