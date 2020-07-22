@@ -4,7 +4,7 @@ import { Proprietarios } from 'src/app/core/models/proprietarios';
 import { Veiculos } from 'src/app/core/models/veiculos';
 import { ProprietarioService } from '../../services/proprietario.service';
 import { finalize, tap } from 'rxjs/operators';
-import { ActivatedRouteSnapshot, ActivatedRoute } from '@angular/router';
+import { ActivatedRouteSnapshot, ActivatedRoute, Router } from '@angular/router';
 import { Setor } from 'src/app/core/models/setor';
 import { Posto } from 'src/app/core/models/posto';
 import { VeiculoService } from 'src/app/modules/veiculos/services/veiculo.service';
@@ -33,7 +33,8 @@ export class ProprietariosFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     private proprietarioService: ProprietarioService,
     private veiculoService: VeiculoService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private next: Router
   ) { }
 
   ngOnInit(): void {
@@ -60,9 +61,17 @@ export class ProprietariosFormComponent implements OnInit {
   }
 
   public onSubmit(){
+
     if(this.formulario.valid){
+      
       this.proprietario = this.formulario.value
-      this.proprietarioService.save(this.proprietario).subscribe();
+      if(this.route.snapshot.params['id']){
+        this.proprietarioService.update(this.proprietario, this.proprietario.id).subscribe();
+        this.next.navigate(['proprietarios']);
+      }else{
+        this.proprietarioService.save(this.proprietario).subscribe();
+        this.next.navigate(['proprietarios']);
+      }
     }
     
   }

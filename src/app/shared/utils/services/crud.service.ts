@@ -34,5 +34,9 @@ export class CrudService<T> {
     return this.http.post<T>(API_CONFIG.baseurl + this.url, item)
   }
 
+  public update(item: T, id: String): Observable<T>{
+    
+    return this.http.put<T>(API_CONFIG.baseurl + this.url + `/${id}`, item)
+  }
   
 }
