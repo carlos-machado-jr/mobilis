@@ -19,24 +19,37 @@ export class ProprietariosGuard implements Resolve<any> {
     state: RouterStateSnapshot):Observable<any> {
       this.usuarios = this.storage.getUser();
       
-      if(this.usuarios.permissao === "Supervisor"){
-
-        return this.proprietarioService.findAllActivated();
-
-      } else if  (this.usuarios.permissao === "Usuario"){
-
-        
-        
-      } else {
-        let url = state.url.split('/');
-        if (url.length > 3){
-          console.log('maior que 3');
-          
-        }
-        return this.getAdmin(state);
+      switch(this.usuarios.permissao){
+          case 'Supervisor':
+            if(next.params['id']){
+              
+              return this.findById(next.params['id']);
+            } else{
+            return this.proprietarioService.findAllActivated();
+            }
+            break;
+          case 'Administrador':
+            if(next.params['id']){
+              
+              return this.findById(next.params['id']);
+            } else{
+              return this.getAdmin(state);
+            }
+            
+            
+            break;
+          default:
+            break;
       }
+      
+      
   }
   
+
+  private findById(id: String): Observable<any>{
+    
+    return this.proprietarioService.findById(id);
+  }
   private getAdmin(state: RouterStateSnapshot): Observable<any> {
     let rota = state.url.split('/')[2];
     
@@ -46,10 +59,7 @@ export class ProprietariosGuard implements Resolve<any> {
         break;
       case 'desativados':
         return this.proprietarioService.findAllDisabled();
-        break;
-      case 'adicionar':
-        return this.proprietarioService.findById("4"); 
-        break;  
+        break; 
       default:
         return this.proprietarioService.findAll();
         

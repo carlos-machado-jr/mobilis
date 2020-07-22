@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -21,7 +21,7 @@ export class TableComponent  extends MatPaginatorIntl implements OnInit {
   @Input() data: any[];
   @Input() edit: boolean;
   @Input() delete: boolean;
-
+  @Output() getId = new EventEmitter<string>();
 
   dataSource: MatTableDataSource<any>;
 
@@ -49,6 +49,9 @@ export class TableComponent  extends MatPaginatorIntl implements OnInit {
    
   }
 
+  redirectUrl(id){
+    this.getId.next(id);
+  }
   getDataSource(){
     this.dataSource.data = this.data
     this.dataSource.paginator = this.paginator;

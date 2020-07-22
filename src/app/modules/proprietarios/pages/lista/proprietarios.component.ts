@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Proprietarios } from 'src/app/core/models/proprietarios';
 import { Veiculos } from 'src/app/core/models/veiculos';
 
@@ -13,7 +13,8 @@ export class ProprietariosComponent implements OnInit {
   data: any[];
   columns: String[] = ['id', 'nome', 'email', 'nip', 'cnh', 'setor', 'posto', 'cartao']
   constructor(
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private next: Router
     ) { }
 
   ngOnInit(): void {
@@ -21,5 +22,8 @@ export class ProprietariosComponent implements OnInit {
    
    
   }
-  
+  redirectUrl(event){
+    this.next.navigate([`proprietarios/${event}`]);
+    
+  }
 }

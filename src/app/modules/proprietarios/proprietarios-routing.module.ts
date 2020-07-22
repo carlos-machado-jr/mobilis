@@ -9,6 +9,7 @@ const routes: Routes = [
   { path: 'ativados', component: ProprietariosComponent, resolve: {proprietarios: ProprietariosGuard} },
   { path: 'desativados', component: ProprietariosComponent, resolve: {proprietarios: ProprietariosGuard} },
   { path: 'adicionar', component: ProprietariosFormComponent  },
+  { path: ':id', component: ProprietariosFormComponent, resolve: {proprietarios: ProprietariosGuard}},
 
 
   

@@ -12,3 +12,6 @@ table {
 .center{
     margin: 0 auto;
 }
+.delete{
+  color: #d00c0cd9;
+}
