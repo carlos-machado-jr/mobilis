@@ -16,6 +16,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
+import { SkeletonModule } from 'src/app/shared/components/skeleton/skeleton.module';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatCardModule,
     MatButtonModule,
     MatSelectModule,
-    MatIconModule
+    MatIconModule,
+    SkeletonModule
 
   ],
   providers:[ProprietarioService, ProprietariosGuard]

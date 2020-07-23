@@ -20,16 +20,12 @@ export class ErrorInterceptor implements HttpInterceptor {
   constructor(private account: AccountService) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-      this.account.isLoggedIn.next(false);
-      this.account.showLoading();
+      
       return next.handle(request)
       .pipe(
+       
         catchError(this.handleError),
-        finalize(()=> {
-          this.account.isLoggedIn.next(true);
-          this.account.hideLoading()
-
-        })
+        
         );
   }
   private handleError(error: HttpErrorResponse) {

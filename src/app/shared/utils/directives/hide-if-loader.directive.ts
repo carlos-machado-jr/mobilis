@@ -25,7 +25,9 @@ export class HideIfLoaderDirective implements OnInit {
 
     private getStatusLogin(displayValue){
       this.subscription = this.account.isLoading.subscribe(
-        isLogged => { 
+        isLogged => {  
+          console.log("teste" + isLogged);
+          
           this.renderer.setStyle(this.el.nativeElement, 'display',  isLogged ? 'none' : displayValue );
         });
     }

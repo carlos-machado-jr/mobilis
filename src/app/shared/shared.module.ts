@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { AccountService } from './utils/services/account.service';
 import { StorageService } from './utils/services/storage.service';
 import { CrudService } from './utils/services/crud.service';
+import { HideIfLoaderDirective } from './utils/directives/hide-if-loader.directive';
 
 
 
@@ -12,11 +13,12 @@ import { CrudService } from './utils/services/crud.service';
 
 @NgModule({
   declarations: [
-      
+    HideIfLoaderDirective
   ],
   imports: [
     CommonModule,
   ],
+  exports: [HideIfLoaderDirective],
   providers: [StorageService, AccountService]
 })
 export class SharedModule { }

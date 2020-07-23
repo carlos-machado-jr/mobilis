@@ -22,8 +22,7 @@ import { HideIfLoaderDirective } from './shared/utils/directives/hide-if-loader.
     AppComponent,
     NavbarComponent,
     // directives
-    ShowIfLoggedDirective,
-    
+    ShowIfLoggedDirective    
     
   ],
   imports: [
@@ -34,7 +33,7 @@ import { HideIfLoaderDirective } from './shared/utils/directives/hide-if-loader.
     MatProgressSpinnerModule,
     CoreModule,
     SpinnerModule,
-    SharedModule,
+    
     SkeletonModule
   ],
   providers: [],

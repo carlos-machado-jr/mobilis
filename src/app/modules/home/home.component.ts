@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { StorageService } from 'src/app/shared/utils/services/storage.service';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { AccountService } from 'src/app/shared/utils/services/account.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -12,16 +12,17 @@ import { ActivatedRoute } from '@angular/router';
 export class HomeComponent implements OnInit {
  
   usuario: String = '';
+  public isLoading: Subject<Boolean>;
 
   constructor(
     private storage: StorageService,
-    private route: ActivatedRoute
+    private account: AccountService
     ) { 
       
      }
 
   ngOnInit() {
-    console.log(this.route.snapshot.data['usuario']);
+    this.isLoading = this.account.isLoading;
     
     let nome = this.storage.getLocalUser();
     this.usuario = nome.nome_usuario; 
