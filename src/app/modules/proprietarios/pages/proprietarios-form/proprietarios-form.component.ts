@@ -69,8 +69,11 @@ export class ProprietariosFormComponent implements OnInit {
         this.proprietarioService.update(this.proprietario, this.proprietario.id).subscribe();
         this.next.navigate(['proprietarios']);
       }else{
-        this.proprietarioService.save(this.proprietario).subscribe();
-        this.next.navigate(['proprietarios']);
+        this.proprietarioService.save(this.proprietario).subscribe(
+          success=>this.next.navigate(['proprietarios']),
+          error=>alert(error)
+        );
+        
       }
     }
     
