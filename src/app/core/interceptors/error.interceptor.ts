@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {  catchError, finalize } from 'rxjs/operators';
+import {  catchError, finalize, timeout, delay } from 'rxjs/operators';
 
 import {
   HttpRequest,
@@ -21,10 +21,14 @@ export class ErrorInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
       this.account.showLoading();
+      this.account.isLoggedIn.next(false);
       return next.handle(request)
       .pipe(
         catchError(this.handleError),
-        finalize(()=> this.account.hideLoading())
+        finalize(()=> {
+          this.account.hideLoading()
+          this.account.isLoggedIn.next(true);
+        })
         );
   }
   private handleError(error: HttpErrorResponse) {

@@ -48,7 +48,6 @@ export class AuthserviceService {
       let user = this.extractToken(authorizationValue.substring(7));
       this.storage.setLocalUser(user);
 
-      // this.account.findByPerfil(user.nome_usuario).subscribe((user: Usuarios) => this.storage.setUser(user));
     }
     
     return null;

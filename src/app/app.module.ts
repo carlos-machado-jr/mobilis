@@ -10,6 +10,7 @@ import { CoreModule } from './core/core.module'
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { SharedModule } from './shared/shared.module';
 import { SpinnerModule } from './shared/components/spinner/spinner.module';
+import { SkeletonModule } from './shared/components/skeleton/skeleton.module';
 import { ShowIfLoggedDirective } from './shared/utils/directives/show-if-logged.directive';
 
 
@@ -31,7 +32,8 @@ import { ShowIfLoggedDirective } from './shared/utils/directives/show-if-logged.
     MatProgressSpinnerModule,
     CoreModule,
     SpinnerModule,
-    SharedModule
+    SharedModule,
+    SkeletonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
