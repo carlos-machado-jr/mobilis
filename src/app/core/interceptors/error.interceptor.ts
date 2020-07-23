@@ -23,9 +23,7 @@ export class ErrorInterceptor implements HttpInterceptor {
       
       return next.handle(request)
       .pipe(
-       
-        catchError(this.handleError),
-        
+        catchError(this.handleError)
         );
   }
   private handleError(error: HttpErrorResponse) {
