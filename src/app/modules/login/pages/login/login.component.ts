@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {  Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { AuthserviceService } from 'src/app/shared/utils/services/authservice.service';
 import { Router } from '@angular/router';
+import { tap } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { AccountService } from 'src/app/shared/utils/services/account.service';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +12,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  hide = true;
+  public hide: boolean = true;
   
 
   formulario: FormGroup;
@@ -17,19 +20,21 @@ export class LoginComponent implements OnInit {
   constructor(
     private authService: AuthserviceService,
     private formBuilder: FormBuilder,
-    private route: Router
+    private route: Router,
   ) { }
 
   
   ngOnInit() {
     this.createForm();
-  
   }
   
   authenticated(){
     this.authService.authenticate(this.formulario.value)
     .subscribe(
-      sucess => this.route.navigate(['/home']),
+      sucess => {
+        
+        this.route.navigate(['/home'])
+      },
       erro => ''
     );
   }

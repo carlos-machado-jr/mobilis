@@ -12,6 +12,7 @@ import { SharedModule } from './shared/shared.module';
 import { SpinnerModule } from './shared/components/spinner/spinner.module';
 import { SkeletonModule } from './shared/components/skeleton/skeleton.module';
 import { ShowIfLoggedDirective } from './shared/utils/directives/show-if-logged.directive';
+import { HideIfLoaderDirective } from './shared/utils/directives/hide-if-loader.directive';
 
 
 
@@ -22,6 +23,7 @@ import { ShowIfLoggedDirective } from './shared/utils/directives/show-if-logged.
     NavbarComponent,
     // directives
     ShowIfLoggedDirective,
+    
     
   ],
   imports: [

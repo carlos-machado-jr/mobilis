@@ -27,9 +27,7 @@ export class LoaderGuard implements Resolve<any> {
         
       }
       ),
-      finalize( () => {
-        this.account.isLoggedIn.next(true);
-      })
+     
     );
   }
   

@@ -15,12 +15,15 @@ import { MatFormFieldModule, MatSuffix } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { AuthserviceService } from 'src/app/shared/utils/services/authservice.service';
+import { SpinnerModule } from 'src/app/shared/components/spinner/spinner.module';
+import { SkeletonModule } from 'src/app/shared/components/skeleton/skeleton.module';
+import { HideIfLoaderDirective } from 'src/app/shared/utils/directives/hide-if-loader.directive';
 
 
 
 
 @NgModule({
-  declarations: [LoginComponent, ForgotPasswordComponent],
+  declarations: [LoginComponent, ForgotPasswordComponent, HideIfLoaderDirective],
   imports: [
     // common
     
@@ -30,12 +33,14 @@ import { AuthserviceService } from 'src/app/shared/utils/services/authservice.se
     // angular forms
     ReactiveFormsModule,
     FormsModule,
+    SpinnerModule,
     // material design
     MatFormFieldModule,
     MatInputModule, 
     MatCardModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    SkeletonModule
    
     
   ],
