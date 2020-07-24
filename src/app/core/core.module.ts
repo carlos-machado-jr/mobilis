@@ -5,14 +5,17 @@ import { HeadersInterceptorProvider } from './interceptors/headers.interceptor'
 import { AuthGuard } from './guards/auth.guard'
 import { LoaderGuard } from './guards/loader.guard'
 import { UsuariosGuard } from './guards/usuarios.guard'
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [NavbarComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    
   ],
   exports: [],
   providers: [HeadersInterceptorProvider,ErrorInterceptorProvider, AuthGuard, LoaderGuard]

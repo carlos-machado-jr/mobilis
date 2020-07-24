@@ -27,4 +27,11 @@ export class ProprietarioService extends CrudService<Proprietarios> {
   public findAllPosto(): Observable<Posto[]>{
     return this.http.get<Posto[]>(`${API_CONFIG.baseurl}/posto`);
   }
+
+  public showTeste() {
+    this.isTeste.next(true);
+}
+  public hideTeste() {
+    this.isTeste.next(false);
+  }
 }

@@ -25,14 +25,14 @@ export class ErrorInterceptor implements HttpInterceptor {
     ) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    this.proprietarioService.isTeste.next(true);
+    this.proprietarioService.showTeste();
       
     return next.handle(request)
       .pipe(
         catchError(this.handleError),
         delay(2000),
         finalize(()=> {
-        this.proprietarioService.isTeste.next(false);
+        this.proprietarioService.hideTeste();
 
         })
         );

@@ -25,7 +25,9 @@ export class ShowIfLoggedDirective implements OnInit {
 
     private getStatusLogin(displayValue){
       this.subscription = this.account.isLoggedIn.subscribe(
-        isLogged => {          
+        isLogged => {   
+          console.log(isLogged);
+                 
           this.renderer.setStyle(this.el.nativeElement, 'display',  isLogged ? displayValue : 'none');
         });
     }
