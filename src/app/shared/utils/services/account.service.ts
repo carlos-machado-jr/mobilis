@@ -12,7 +12,6 @@ export class AccountService {
   public jwt = new JwtHelperService();
   public isLoggedIn = new BehaviorSubject<boolean>(false);
   public isLoading = new BehaviorSubject<boolean>(false);
-  public isTeste = new BehaviorSubject<boolean>(false);
 
   
   constructor(

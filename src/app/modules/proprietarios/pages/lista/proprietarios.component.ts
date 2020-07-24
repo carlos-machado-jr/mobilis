@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Proprietarios } from 'src/app/core/models/proprietarios';
 import { Veiculos } from 'src/app/core/models/veiculos';
+import { AccountService } from 'src/app/shared/utils/services/account.service';
+import { Subject } from 'rxjs';
+import { ProprietarioService } from '../../services/proprietario.service';
 
 @Component({
   selector: 'app-proprietarios',
@@ -9,19 +12,18 @@ import { Veiculos } from 'src/app/core/models/veiculos';
   styleUrls: ['./proprietarios.component.css']
 })
 export class ProprietariosComponent implements OnInit {
-  
   data: any[];
   columns: String[] = ['id', 'nome', 'email', 'nip', 'cnh', 'setor', 'posto', 'cartao']
   constructor(
     private route: ActivatedRoute,
-    private next: Router
+    private next: Router,
     ) { }
 
   ngOnInit(): void {
    this.data = this.route.snapshot.data['proprietarios']
    
-   
   }
+  
   redirectUrl(event){
     this.next.navigate([`proprietarios/${event}`]);
     

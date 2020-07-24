@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { CrudService } from 'src/app/shared/utils/services/crud.service';
 import { Proprietarios} from '../../../core/models/proprietarios';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { API_CONFIG } from 'src/app/core/config/api.config';
 
 import { Setor} from '../../../core/models/setor';
@@ -13,6 +13,7 @@ import { Posto} from '../../../core/models/posto';
   providedIn: 'root'
 })
 export class ProprietarioService extends CrudService<Proprietarios> {
+  public isTeste = new BehaviorSubject<boolean>(false);
 
   constructor(
     protected http: HttpClient

@@ -12,18 +12,29 @@ import {
 } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { AccountService } from 'src/app/shared/utils/services/account.service';
+import { ProprietarioService } from 'src/app/modules/proprietarios/services/proprietario.service';
 
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
 
-  constructor(private account: AccountService) {}
+  constructor(
+    private account: AccountService,
+    private proprietarioService: ProprietarioService
+    
+    ) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    this.proprietarioService.isTeste.next(true);
       
-      return next.handle(request)
+    return next.handle(request)
       .pipe(
-        catchError(this.handleError)
+        catchError(this.handleError),
+        delay(2000),
+        finalize(()=> {
+        this.proprietarioService.isTeste.next(false);
+
+        })
         );
   }
   private handleError(error: HttpErrorResponse) {
