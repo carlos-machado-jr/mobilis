@@ -23,7 +23,7 @@ import { HideIfLoaderDirective } from 'src/app/shared/utils/directives/hide-if-l
 
 
 @NgModule({
-  declarations: [ProprietariosComponent, ProprietariosFormComponent,  ListaSkeletonComponent, HideIfLoaderDirective],
+  declarations: [ProprietariosComponent, ProprietariosFormComponent,  ListaSkeletonComponent],
   imports: [
     CommonModule,
     ProprietariosRoutingModule,

@@ -9,7 +9,7 @@ import { Subject } from 'rxjs';
 })
 export class ListaSkeletonComponent implements OnInit {
   isLog: Subject<boolean>;
-
+  displayedColumns = ['id', 'nome', 'email', 'nip', 'cnh', 'setor', 'posto', 'cartao'];
   constructor(
     private service: ProprietarioService
 

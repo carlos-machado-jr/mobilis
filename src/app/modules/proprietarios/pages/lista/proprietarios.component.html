@@ -5,6 +5,6 @@
     edit="true"
     delete="true"
     (getId)="redirectUrl($event)"
-    hideIfLoader
+    [loading]="isLog"
+    
 ></app-table>
-<teste-skeleton *ngIf="isLog | async"></teste-skeleton>

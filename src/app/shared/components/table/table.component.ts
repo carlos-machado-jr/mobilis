@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angu
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { Proprietarios } from 'src/app/core/models/proprietarios';
 import { tap } from 'rxjs/operators';
@@ -23,7 +23,9 @@ export class TableComponent  extends MatPaginatorIntl implements OnInit {
   @Input() data: Observable<any>;
   @Input() edit: boolean;
   @Input() delete: boolean;
+  @Input() loading: Subject<any>;
   @Output() getId = new EventEmitter<string>();
+  
 
   dataSource: MatTableDataSource<any>;
 

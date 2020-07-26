@@ -9,11 +9,13 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
+import { SkeletonModule } from '../skeleton/skeleton.module';
+import { HideIfLoaderDirective } from '../../utils/directives/hide-if-loader.directive';
 
 
 
 @NgModule({
-  declarations: [TableComponent],
+  declarations: [TableComponent, HideIfLoaderDirective],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -25,7 +27,8 @@ import { MatTableModule } from '@angular/material/table';
     MatPaginatorModule,
     MatIconModule,
     MatButtonModule,
-    MatTableModule
+    MatTableModule,
+    SkeletonModule
   ],
   exports:[TableComponent],
   providers:[ { provide: MatPaginatorIntl, useClass: TableComponent}]
