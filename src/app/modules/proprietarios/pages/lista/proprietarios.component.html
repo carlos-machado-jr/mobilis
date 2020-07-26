@@ -1,9 +1,10 @@
+
 <app-table 
     [displayedColumns]= "columns"
     [data] = "data"
     edit="true"
     delete="true"
     (getId)="redirectUrl($event)"
-    
+    hideIfLoader
 ></app-table>
-<lista-skeleton></lista-skeleton>
+<teste-skeleton *ngIf="isLog | async"></teste-skeleton>

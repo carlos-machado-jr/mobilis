@@ -13,7 +13,7 @@ const routes: Routes = [
 
 
   
-  { path: '', component: ProprietariosComponent, resolve: {proprietarios: ProprietariosGuard} }
+  { path: '', component: ProprietariosComponent}
 
 
 ];

@@ -20,11 +20,12 @@ export class LoaderGuard implements Resolve<any> {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<any> {
     this.user = this.storage.getLocalUser();
+    
     this.account.isLoggedIn.next(false);
     this.account.showLoading();  
+
     return this.account.findByPerfil(this.user.nome_usuario)
     .pipe( 
-      delay(1000),
       tap( (usuarios: Usuarios) => {
         this.storage.setUser(usuarios);
         

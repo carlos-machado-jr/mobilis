@@ -19,10 +19,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { SkeletonModule } from 'src/app/shared/components/skeleton/skeleton.module';
 import { ListaSkeletonComponent } from './components/lista-skeleton/lista-skeleton.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { HideIfLoaderDirective } from 'src/app/shared/utils/directives/hide-if-loader.directive';
 
 
 @NgModule({
-  declarations: [ProprietariosComponent, ProprietariosFormComponent,  ListaSkeletonComponent],
+  declarations: [ProprietariosComponent, ProprietariosFormComponent,  ListaSkeletonComponent, HideIfLoaderDirective],
   imports: [
     CommonModule,
     ProprietariosRoutingModule,

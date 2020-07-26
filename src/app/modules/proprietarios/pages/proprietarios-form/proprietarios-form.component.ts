@@ -10,8 +10,6 @@ import { Posto } from 'src/app/core/models/posto';
 import { VeiculoService } from 'src/app/modules/veiculos/services/veiculo.service';
 import { Montadora } from 'src/app/core/models/montadora';
 import { Cor } from 'src/app/core/models/cor';
-import { AccountService } from 'src/app/shared/utils/services/account.service';
-import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-proprietarios-form',
@@ -29,19 +27,18 @@ export class ProprietariosFormComponent implements OnInit {
   public postoLista: Posto[];
   public montadoraLista: Montadora[];
   public corLista: Cor[];
-  public isLoading: Subject<Boolean>;
+
 
   constructor(
     private formBuilder: FormBuilder,
     private proprietarioService: ProprietarioService,
     private veiculoService: VeiculoService,
     private route: ActivatedRoute,
-    private next: Router,
-    private account: AccountService
+    private next: Router
   ) { }
 
   ngOnInit(): void {
-    this.isLoading = this.account.isLoading;
+      
       this.veiculoFormArray = new FormArray([]);
       
       this.getProprietarios();

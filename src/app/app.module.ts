@@ -12,7 +12,6 @@ import { SharedModule } from './shared/shared.module';
 import { SpinnerModule } from './shared/components/spinner/spinner.module';
 import { SkeletonModule } from './shared/components/skeleton/skeleton.module';
 import { ShowIfLoggedDirective } from './shared/utils/directives/show-if-logged.directive';
-import { HideIfLoaderDirective } from './shared/utils/directives/hide-if-loader.directive';
 
 
 
@@ -20,9 +19,9 @@ import { HideIfLoaderDirective } from './shared/utils/directives/hide-if-loader.
 @NgModule({
   declarations: [
     AppComponent,
-    
+    NavbarComponent,
     // directives
-    ShowIfLoggedDirective
+    ShowIfLoggedDirective    
     
   ],
   imports: [
@@ -33,6 +32,7 @@ import { HideIfLoaderDirective } from './shared/utils/directives/hide-if-loader.
     MatProgressSpinnerModule,
     CoreModule,
     SpinnerModule,
+    
     SkeletonModule
   ],
   providers: [],

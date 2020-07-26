@@ -4,7 +4,8 @@ import { Observable } from 'rxjs';
 import { ProprietarioService } from 'src/app/modules/proprietarios/services/proprietario.service';
 import { StorageService } from 'src/app/shared/utils/services/storage.service';
 import { Usuarios } from '../models/usuarios';
-import { finalize, delay } from 'rxjs/operators';
+import { finalize, delay, tap } from 'rxjs/operators';
+import { AccountService } from 'src/app/shared/utils/services/account.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,7 @@ export class ProprietariosGuard implements Resolve<any> {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot):Observable<any> {
       this.usuarios = this.storage.getUser();
+
       switch(this.usuarios.permissao){
           case 'Supervisor':
             if(next.params['id']){
@@ -61,7 +63,8 @@ export class ProprietariosGuard implements Resolve<any> {
         return this.proprietarioService.findAllDisabled();
         break; 
       default:
-        return this.proprietarioService.findAll();
+        return this.proprietarioService.findAll()
+         
         
     }
 

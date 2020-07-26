@@ -17,7 +17,6 @@ import { MatInputModule } from '@angular/material/input';
 import { AuthserviceService } from 'src/app/shared/utils/services/authservice.service';
 import { SpinnerModule } from 'src/app/shared/components/spinner/spinner.module';
 import { SkeletonModule } from 'src/app/shared/components/skeleton/skeleton.module';
-import { HideIfLoaderDirective } from 'src/app/shared/utils/directives/hide-if-loader.directive';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 

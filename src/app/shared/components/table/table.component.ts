@@ -4,6 +4,8 @@ import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { Proprietarios } from 'src/app/core/models/proprietarios';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-table',
@@ -18,7 +20,7 @@ export class TableComponent  extends MatPaginatorIntl implements OnInit {
   // é necessário passar as colunas como parametro!
   @Input() displayedColumns: String[];
   // é necessário passar os dados como observable da requisição!
-  @Input() data: any[];
+  @Input() data: Observable<any>;
   @Input() edit: boolean;
   @Input() delete: boolean;
   @Output() getId = new EventEmitter<string>();
@@ -45,6 +47,7 @@ export class TableComponent  extends MatPaginatorIntl implements OnInit {
        this.getDataSource();
        this.columnsIsNull();
    }
+   console.log(this.data);
   
    
   }
@@ -53,7 +56,7 @@ export class TableComponent  extends MatPaginatorIntl implements OnInit {
     this.getId.next(id);
   }
   getDataSource(){
-    this.dataSource.data = this.data
+    this.data.subscribe((data: any[]) => this.dataSource.data = data);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
     
