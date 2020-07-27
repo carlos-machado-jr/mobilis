@@ -18,24 +18,14 @@ import { ProprietarioService } from 'src/app/modules/proprietarios/services/prop
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
 
-  constructor(
-    private account: AccountService,
-    private proprietarioService: ProprietarioService
-    
-    ) {}
+
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    this.proprietarioService.showTeste();
+     
       
     return next.handle(request)
       .pipe(
-        catchError(this.handleError),
-        delay(2000),
-        finalize(()=> {
-        this.proprietarioService.hideTeste();
-
-        })
-        );
+        catchError(this.handleError));
   }
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {

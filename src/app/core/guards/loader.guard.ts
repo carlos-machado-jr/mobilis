@@ -20,24 +20,16 @@ export class LoaderGuard implements Resolve<any> {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<any> {
     this.user = this.storage.getLocalUser();
+    console.log("loader");
     
-    this.account.isLoggedIn.next(false);
-    this.account.showLoading();  
+     
 
     return this.account.findByPerfil(this.user.nome_usuario)
     .pipe( 
       tap( (usuarios: Usuarios) => {
         this.storage.setUser(usuarios);
         
-      }),
-      finalize(()=> {
-        this.account.hideLoading();
-        this.account.isLoggedIn.next(true);
-
-
-      })
-     
-    );
+      }));
   }
   
 }

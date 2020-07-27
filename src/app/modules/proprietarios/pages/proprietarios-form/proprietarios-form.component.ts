@@ -38,7 +38,8 @@ export class ProprietariosFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-      
+    
+    
       this.veiculoFormArray = new FormArray([]);
       
       this.getProprietarios();

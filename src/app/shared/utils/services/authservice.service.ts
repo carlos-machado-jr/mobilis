@@ -7,7 +7,7 @@ import { Usuarios } from 'src/app/core/models/usuarios';
 import { API_CONFIG } from 'src/app/core/config/api.config';
 import { LocalUser } from 'src/app/core/models/local_user';
 import { StorageService } from './storage.service';
-import { tap } from 'rxjs/operators';
+import { tap, finalize, mergeMap, map } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
 import { AccountService } from './account.service';
 import { Router } from '@angular/router';
@@ -35,10 +35,10 @@ export class AuthserviceService {
       observe: 'response',
       responseType: 'text'
     }).pipe(
-      tap(response => this.succesfulLogin(response.headers.get('Authorization')
-      
-      ))
-    );
+      tap(response => {
+        this.succesfulLogin(response.headers.get('Authorization'))
+      })
+);
   }
 
 

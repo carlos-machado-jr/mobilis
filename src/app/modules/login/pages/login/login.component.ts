@@ -3,7 +3,7 @@ import {  Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { AuthserviceService } from 'src/app/shared/utils/services/authservice.service';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 import { AccountService } from 'src/app/shared/utils/services/account.service';
 
 @Component({
@@ -13,6 +13,7 @@ import { AccountService } from 'src/app/shared/utils/services/account.service';
 })
 export class LoginComponent implements OnInit {
   public hide: boolean = true;
+  data: Observable<any>;
   
 
   formulario: FormGroup;
@@ -21,11 +22,14 @@ export class LoginComponent implements OnInit {
     private authService: AuthserviceService,
     private formBuilder: FormBuilder,
     private route: Router,
+    private account: AccountService,
+
   ) { }
 
   
   ngOnInit() {
     this.createForm();
+    this.data = this.account.isLoading;
   }
   
   authenticated(){

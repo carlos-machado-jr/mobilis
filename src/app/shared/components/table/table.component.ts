@@ -49,7 +49,6 @@ export class TableComponent  extends MatPaginatorIntl implements OnInit {
        this.getDataSource();
        this.columnsIsNull();
    }
-   console.log(this.data);
   
    
   }

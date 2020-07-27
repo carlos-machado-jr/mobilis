@@ -17,13 +17,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { SkeletonModule } from 'src/app/shared/components/skeleton/skeleton.module';
-import { ListaSkeletonComponent } from './components/lista-skeleton/lista-skeleton.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { HideIfLoaderDirective } from 'src/app/shared/utils/directives/hide-if-loader.directive';
-
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 @NgModule({
-  declarations: [ProprietariosComponent, ProprietariosFormComponent,  ListaSkeletonComponent],
+  declarations: [ProprietariosComponent, ProprietariosFormComponent],
   imports: [
     CommonModule,
     ProprietariosRoutingModule,
@@ -38,6 +36,7 @@ import { HideIfLoaderDirective } from 'src/app/shared/utils/directives/hide-if-l
     MatButtonModule,
     MatSelectModule,
     MatIconModule,
+    MatProgressBarModule,
     SkeletonModule,
     SharedModule
 

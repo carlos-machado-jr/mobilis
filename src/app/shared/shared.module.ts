@@ -14,12 +14,12 @@ import { HideIfLoaderDirective } from './utils/directives/hide-if-loader.directi
 
 @NgModule({
   declarations: [
-    
+    HideIfLoaderDirective
   ],
   imports: [
     CommonModule,
   ],
-  exports: [],
+  exports: [HideIfLoaderDirective],
   providers: [StorageService, AccountService]
 })
 export class SharedModule { }

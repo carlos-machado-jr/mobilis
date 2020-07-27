@@ -63,6 +63,7 @@ export class ProprietariosComponent implements OnInit {
         return this.proprietarioService.findAllDisabled();
         break; 
       default:
+        
         return this.proprietarioService.findAll()
          
         
