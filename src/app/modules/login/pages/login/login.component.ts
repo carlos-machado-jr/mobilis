@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
 import { Subject, Observable } from 'rxjs';
 import { AccountService } from 'src/app/shared/utils/services/account.service';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -22,16 +23,21 @@ export class LoginComponent implements OnInit {
     private authService: AuthserviceService,
     private formBuilder: FormBuilder,
     private route: Router,
-    private account: AccountService,
+    private loginService: LoginService,
 
   ) { }
 
   
   ngOnInit() {
     this.createForm();
-    this.data = this.account.isLoading;
+    this.data = this.loginService.splashLoading;
+    console.log(this.loginService.splashLoading);
+    
   }
-  
+  ngDoCheck(){
+    console.log(this.loginService.splashLoading);
+
+  }
   authenticated(){
     this.authService.authenticate(this.formulario.value)
     .subscribe(

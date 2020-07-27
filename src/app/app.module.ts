@@ -12,6 +12,7 @@ import { SharedModule } from './shared/shared.module';
 import { SpinnerModule } from './shared/components/spinner/spinner.module';
 import { SkeletonModule } from './shared/components/skeleton/skeleton.module';
 import { ShowIfLoggedDirective } from './shared/utils/directives/show-if-logged.directive';
+import { LoginService } from './modules/login/services/login.service';
 
 
 
@@ -35,7 +36,7 @@ import { ShowIfLoggedDirective } from './shared/utils/directives/show-if-logged.
     
     SkeletonModule
   ],
-  providers: [],
+  providers: [LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

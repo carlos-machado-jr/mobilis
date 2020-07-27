@@ -11,6 +11,7 @@ import { AccountService } from 'src/app/shared/utils/services/account.service';
 import { ProprietarioService } from 'src/app/modules/proprietarios/services/proprietario.service';
 import { delay, finalize } from 'rxjs/operators';
 import { StorageService } from 'src/app/shared/utils/services/storage.service';
+import { LoginService } from 'src/app/modules/login/services/login.service';
 
 @Injectable()
 export class LoadingInterceptor implements HttpInterceptor {
@@ -18,22 +19,26 @@ export class LoadingInterceptor implements HttpInterceptor {
   constructor(
     private account: AccountService,
     private proprietarioService: ProprietarioService,
-    private storage: StorageService
+    private storage: StorageService,
+    private loginService: LoginService
 
     
-    ) {}
+    ) {
+    console.log("iniciou loading interceptor");
+
+    }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const user = this.storage.getLocalUser();
     this.account.isLoggedIn.next(false);
+    
     this.account.showLoading(); 
     
     if(request.url === "http://localhost:8080/proprietarios"){
       this.proprietarioService.showTeste();
     }
-    if(request.url === "http://localhost:8080/usuarios/perfil?value="+ user){
-      
-             
+    if(request.url === "http://localhost:8080/login"){
+      this.loginService.showSplash();
     }
     console.log(request);
     
@@ -43,10 +48,13 @@ export class LoadingInterceptor implements HttpInterceptor {
       finalize(()=> {
       this.proprietarioService.hideTeste();
       this.account.hideLoading();
+      this.loginService.closeSplash();
       this.account.isLoggedIn.next(true);
       })
       );
   }
+
+
 }
 export const LoadingInterceptorProvider = {
   provide: HTTP_INTERCEPTORS,

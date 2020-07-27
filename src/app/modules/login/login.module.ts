@@ -18,6 +18,7 @@ import { AuthserviceService } from 'src/app/shared/utils/services/authservice.se
 import { SpinnerModule } from 'src/app/shared/components/spinner/spinner.module';
 import { SkeletonModule } from 'src/app/shared/components/skeleton/skeleton.module';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { LoginService } from './services/login.service'
 
 
 
@@ -40,8 +41,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     MatCardModule,
     MatIconModule,
     MatButtonModule,
-    SkeletonModule
-   
+    SkeletonModule,
     
   ],
   providers: [AuthserviceService]
