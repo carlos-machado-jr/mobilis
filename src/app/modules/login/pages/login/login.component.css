@@ -29,3 +29,88 @@
     top: 0;
     
 }
+
+@keyframes top {
+  0% {
+    transform: rotate(0deg);
+  }
+  /* 25% {
+    transform: rotate(-05deg);
+  }
+  50% {
+    transform: rotate(-10deg);
+  } */
+  75% {
+    transform: rotate(-15deg);
+  }
+  100% {
+    transform: rotate(-20deg);
+  }
+}
+@keyframes bottom {
+  0% {
+    transform: rotate(0deg);
+  }
+  /* 25% {
+    transform: rotate(05deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  } */
+  75% {
+    transform: rotate(15deg);
+  }
+  100% {
+    transform: rotate(20deg);
+  }
+}
+.bottom {
+  width: 100px;
+  height: 50px;
+  background-color: yellow;
+  border-radius: 0 0 100px 100px;
+  animation: bottom 0.7459s infinite;
+}
+.top {
+  width: 100px;
+  height: 50px;
+  background-color: yellow;
+  border-radius: 100px 100px 0 0;
+  animation: top 0.7459s infinite;
+}
+
+
+.eat {
+  width: 25px;
+  height: 25px;
+  background-color: yellow;
+  border-radius: 100%;
+  position: absolute;
+  left: 10px;
+  top: 38px;
+  animation: eat 1s linear 0s infinite ;
+}
+
+@keyframes eat {
+  0% {
+    box-shadow: 
+      100px 0px 0px 0px yellow,
+      200px 0px 0px 0px yellow,
+      300px 0px 0px 0px yellow,
+      400px 0px 0px 0px yellow;
+    }
+  100% {
+    box-shadow: 
+      0px 0px 0px 0px yellow,
+      100px 0px 0px 0px yellow,
+      200px 0px 0px 0px yellow,
+      300px 0px 0px 0px yellow;
+  }
+}
+.pacmam {
+  width: 200px;
+  height: 200px;
+  margin: 20% auto;
+  position: relative;
+}
+

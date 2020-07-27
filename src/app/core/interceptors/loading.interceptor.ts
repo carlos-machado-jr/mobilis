@@ -37,9 +37,8 @@ export class LoadingInterceptor implements HttpInterceptor {
     if(request.url === "http://localhost:8080/proprietarios"){
       this.proprietarioService.showTeste();
     }
-    if(request.url === "http://localhost:8080/login"){
-      this.loginService.showSplash();
-    }
+    this.loginService.showSplash();
+
     console.log(request);
     
   return next.handle(request)
@@ -48,7 +47,6 @@ export class LoadingInterceptor implements HttpInterceptor {
       finalize(()=> {
       this.proprietarioService.hideTeste();
       this.account.hideLoading();
-      this.loginService.closeSplash();
       this.account.isLoggedIn.next(true);
       })
       );
